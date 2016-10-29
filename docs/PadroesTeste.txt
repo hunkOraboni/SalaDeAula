@@ -11,3 +11,5 @@ Se tivermos uma tabela, o número de linhas varia com o BD;
 Vamos pegar criar a estrutura da tabela e colocar uma "variável" (será uma tag do tipo: [@tag]);
 nessa variável iremos substituir todos os dados do BD, como cada dado vai ser uma linha, vamos criar um outro template;
 nesse template irá ter o formato da linha, com outras tags, substituindo cada uma com os valores do BD;
+
+Aqui está editado o arquivo PadroesTeste.txt;
