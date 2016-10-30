@@ -3,9 +3,9 @@
 	private function __construct() {}
 	
 	public static function open() {
-            $usuario = "";
-            $senha = "";
-            $bancodedados = "";
+            $usuario = "saladeaula";
+            $senha = "saladeaula";
+            $bancodedados = "saladeaula";
             $host = "localhost";
             $porta = "3306";
 

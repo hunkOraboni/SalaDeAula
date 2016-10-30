@@ -12,7 +12,7 @@
 	public function model() {
             try {
                 $conexao = Transacao::get();
-                $sql = "SELECT * FROM $this->tabela ";
+                $sql = "SELECT * FROM $this->tabela";
                 $resultado = $conexao->Query($sql);
                 if($resultado->rowCount()==0) {
                     $retorno["erro"] = true;
