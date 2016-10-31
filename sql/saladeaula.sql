@@ -95,7 +95,7 @@ INSERT INTO `estudante` (`id`, `nome`, `email`, `usuario`, `senha`) VALUES
 -- Indexes for table `estudante`
 --
 ALTER TABLE `estudante`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `usuario` (`usuario`);
 
 --
