@@ -8,12 +8,7 @@
             $conexao = Transacao::get();
             $this->tabela = $tabela;
             foreach($campos as $campo){
-                if($campo == "dataUltProg") {
-                    $data = split("[/-]", $_POST[$campo]);
-                    $valor[] = $conexao->quote($data[2].$data[1].$data[0]);
-                } else {
-                    $valor[] = $conexao->quote($_POST[$campo]);
-                }
+                $valor[] = $conexao->quote($_POST[$campo]);
             }
             $this->valores = implode(", ", $valor);
             $this->campos = implode(", ", $campos);

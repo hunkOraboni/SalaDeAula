@@ -112,7 +112,7 @@
                         </div>
                         <div class="modal-footer">
                             <!--<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>-->
-                            <button type="submit" class="btn btn-primary">Entrar</button>
+                            <button type="submit" class="btn btn-primary btnFormLogin">Entrar</button>
                         </div>
                     </form>
                 </div>
@@ -120,14 +120,14 @@
         </div>
         
         <!-- Formulário para Registro -->
-        <div class="modal fade" id="modalRegistrar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalInsereEdita" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="">Registrar</h4>
+                        <h4 class="modal-title" id=""></h4>
                     </div>
-                    <form method="post" action="" id="formRegistrar">
+                    <form method="post" action="" id="formInsereEdita">
                         <div class="modal-body">
                             <div class="input-group">
                                 <span class="input-group-addon">Nome</span>
@@ -150,6 +150,7 @@
                             <!--<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>-->
                             <button type="submit" class="btn btn-primary">Registrar</button>
                         </div>
+                        <input type="hidden" name="id">
                     </form>
                 </div>
             </div>
