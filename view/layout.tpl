@@ -24,6 +24,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="?acao=ListaUsuario">Mostra Usuários</a></li>
+                        <li><a href="?acao=ListaEstudante">Mostra Estudantes</a></li>
                     </ul>
                     <div class="nav navbar-nav navbar-right">
                         <ul class="nav navbar-nav">
@@ -32,6 +33,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a class="btnLogin" href="?" data-toggle="" data-target="" >Login</a></li>
                                     <li><a class="btnRegistrar" href="?">Registrar</a></li>
+                                    <li><a class="btnRegistrarEstudante" href="?">Registrar Estudante</a></li>
                                     <!--<li><a class="btnAlteraSenha" href="?">Alterar Senha</a></li>-->
                                     <li><a class="btnLogout" href="?">Logout</a></li>
                                 </ul>
@@ -149,6 +151,43 @@
                         <div class="modal-footer">
                             <!--<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>-->
                             <button type="submit" class="btn btn-primary">Registrar</button>
+                        </div>
+                        <input type="hidden" name="id">
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Formulário para Registro de Estudante-->
+        <div class="modal fade" id="modalInsereEditaEstudante" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id=""></h4>
+                    </div>
+                    <form method="post" action="" id="formInsereEditaEstudante">
+                        <div class="modal-body">
+                            <div class="input-group">
+                                <span class="input-group-addon">Nome</span>
+                                <input type="text" class="form-control" placeholder="João" name="nome">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">E-mail</span>
+                                <input type="email" class="form-control" placeholder="joao@umprovedor.com" name="email">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">Usuário</span>
+                                <input type="text" class="form-control" placeholder="JoãoUser" name="usuario">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">Senha</span>
+                                <input type="password" class="form-control" placeholder="Senha do João" name="senha">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>-->
+                            <button type="submit" class="btn btn-primary">Registrar Estudante</button>
                         </div>
                         <input type="hidden" name="id">
                     </form>
