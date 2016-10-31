@@ -46,7 +46,7 @@ jQuery(".editarEstudante").click(function(e) {
     
     jQuery("#modalInsereEditaEstudante .modal-title").html("Editar");
     jQuery("#modalInsereEditaEstudante").find("button[type=submit]").html("Editar");
-    jQuery("#modalInsereEditaEstudante").find("form").attr("action", "EditaUsuario");
+    jQuery("#modalInsereEditaEstudante").find("form").attr("action", "EditaEstudante");
     
     jQuery("#modalInsereEditaEstudante").find("input[name=nome]").val(jQuery(linha).children("td:eq(0)").text());
     jQuery("#modalInsereEditaEstudante").find("input[name=email]").val(jQuery(linha).children("td:eq(1)").text());
