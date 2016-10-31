@@ -73,11 +73,11 @@ ALTER TABLE `usuario`
 --
 
 CREATE TABLE `estudante` (
-  `nome` varchar(255) NOT NULL,
-  `senha` varchar(255) NOT NULL,
   `id` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `usuario` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL
+  `senha` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -96,7 +96,7 @@ INSERT INTO `estudante` (`id`, `nome`, `email`, `usuario`, `senha`) VALUES
 --
 ALTER TABLE `estudante`
   ADD PRIMARY KEY (`id`);
-  ADD UNIQUE KEY `estudante` (`estudante`);
+  ADD UNIQUE KEY `usuario` (`usuario`);
 
 --
 -- AUTO_INCREMENT for table `estudante`
