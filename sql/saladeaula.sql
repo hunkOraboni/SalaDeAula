@@ -81,7 +81,7 @@ CREATE TABLE `estudante` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `usuario`
+-- Extraindo dados da tabela `estudante`
 --
 
 INSERT INTO `estudante` (`id`, `nome`, `email`, `usuario`, `senha`) VALUES
@@ -98,7 +98,12 @@ ALTER TABLE `estudante`
   ADD PRIMARY KEY (`id`);
   ADD UNIQUE KEY `estudante` (`estudante`);
 
+--
+-- AUTO_INCREMENT for table `estudante`
+--
 
+ALTER TABLE `estudante`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
