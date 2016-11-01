@@ -13,7 +13,15 @@ class ListaEstudante {
                     $linhaTabela->set("cod", $estudante->id);
                     $linhaTabela->set("nome", $estudante->nome);
                     $linhaTabela->set("email", $estudante->email);
-                    $linhaTabela->set("usuario", $estudante->usuario);
+                    
+                    // Busca usuário
+                    $_POST["id"] = $estudante->idUsuario;
+                    $buscaUsuario = new Busca("usuario");
+                    $resultadoBusca = $buscaUsuario->model();
+                    if(!$resultadoBusca["erro"]) {
+                        $linhaTabela->set("usuario", $resultadoBusca["msg"]->usuario);
+                    }
+                    //$linhaTabela->set("usuario", $estudante->usuario);
                     $estudantes[] = $linhaTabela;
                 }
                 

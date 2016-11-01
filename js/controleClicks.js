@@ -75,6 +75,7 @@ jQuery("#formInsere").submit(function(e) {
                 jQuery("#modalInsere").modal("hide");
                 jQuery("#formInsere").trigger("reset");
                 
+                /*
                 if (acao == "InsereUsuario") {
                     var linha = "<tr cod="+retornoPost.id+"><br>";
                     jQuery.each(valores, function (indice, valor) {
@@ -96,6 +97,7 @@ jQuery("#formInsere").submit(function(e) {
                     var tabela = jQuery(".table tbody");
                     tabela.append(linha);
                 }
+                */
             } else {
                 jQuery("#status .modal-title").html("Erro");
             }
@@ -105,6 +107,9 @@ jQuery("#formInsere").submit(function(e) {
         },
         async: false
     });
+    if((location.search == "?acao=ListaUsuario") || (location.search == "?acao=ListaEstudante")) {
+        setTimeout(location.reload(), 2000);
+    }
     return false;
 });
 
@@ -130,11 +135,13 @@ jQuery("#formEdita").submit(function(e) {
                 var valores = jQuery("#formEdita").serializeArray();
                 jQuery("#modalEdita").modal("hide");
                 jQuery("#formEdita").trigger("reset");
+                /*
                 if (acao == "EditaUsuario") {
                     var linha = ".table tbody tr[cod="+valores[3].value+"] "; 
                     jQuery(linha+"td:eq(0))").text(valores[0].value);
                     jQuery(linha+"td:eq(1)").text(valores[1].value);
                 }
+                */
             } else {
                 jQuery("#status .modal-title").html("Erro");
             }
@@ -144,6 +151,9 @@ jQuery("#formEdita").submit(function(e) {
         },
         async: false
     });
+    if((location.search == "?acao=ListaUsuario") || (location.search == "?acao=ListaEstudante")) {
+        setTimeout(location.reload(), 2000);
+    }
     return false;
 });
 
@@ -178,6 +188,7 @@ jQuery("#formInsereEditaEstudante").submit(function(e) {
                 jQuery("#modalInsereEditaEstudante").modal("hide");
                 jQuery("#formInsereEditaEstudante").trigger("reset");
                 
+                /*
                 if (acao == "InsereEstudante") {
                     var linha = "<tr cod="+retornoPost.id+"><br>";
                     jQuery.each(valores, function (indice, valor) {
@@ -205,6 +216,7 @@ jQuery("#formInsereEditaEstudante").submit(function(e) {
                     jQuery(linha+"td:eq(1)").text(valores[1].value);
                     jQuery(linha+"td:eq(2)").text(valores[2].value);
                 }
+                */
             } else {
                 jQuery("#status .modal-title").html("Erro");
             }
@@ -214,6 +226,9 @@ jQuery("#formInsereEditaEstudante").submit(function(e) {
         },
         async: false
     });
+    if((location.search == "?acao=ListaUsuario") || (location.search == "?acao=ListaEstudante")) {
+        setTimeout(location.reload(), 2000);
+    }
     return false;
 });
 
