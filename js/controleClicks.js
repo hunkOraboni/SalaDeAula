@@ -7,12 +7,10 @@ jQuery(".btnLogin").click(function(e) {
 
 jQuery(".btnRegistrar").click(function(e) {
     e.preventDefault();
-    jQuery("#modalInsereEdita .modal-title").html("Registrar");
-    jQuery("#modalInsereEdita").find("button[type=submit]").html("Registrar");
-    jQuery("#modalInsereEdita").find("form").attr("action","InsereUsuario");
+    jQuery("#modalInsere").find("form").attr("action","InsereUsuario");
     
-    jQuery("#modalInsereEdita").trigger("reset");
-    jQuery("#modalInsereEdita").modal("show");
+    jQuery("#formInsere").trigger("reset");
+    jQuery("#modalInsere").modal("show");
 });
 
 jQuery(".btnRegistrarEstudante").click(function(e) {
@@ -29,15 +27,13 @@ jQuery(".editar").click(function(e) {
     e.preventDefault();
     var linha = jQuery(this).closest("tr");
     
-    jQuery("#modalInsereEdita .modal-title").html("Editar");
-    jQuery("#modalInsereEdita").find("button[type=submit]").html("Editar");
-    jQuery("#modalInsereEdita").find("form").attr("action", "EditaUsuario");
+    jQuery("#modalEdita").find("form").attr("action", "EditaUsuario");
     
-    jQuery("#modalInsereEdita").find("input[name=nome]").val(jQuery(linha).children("td:eq(0)").text());
-    jQuery("#modalInsereEdita").find("input[name=email]").val(jQuery(linha).children("td:eq(1)").text());
-    jQuery("#modalInsereEdita").find("input[name=usuario]").val(jQuery(linha).children("td:eq(2)").text());
-    jQuery("#modalInsereEdita").find("input[name=id]").val(jQuery(linha).attr("cod"));
-    jQuery("#modalInsereEdita").modal("show");
+    jQuery("#modalEdita").find("input[name=nome]").val(jQuery(linha).children("td:eq(0)").text());
+    jQuery("#modalEdita").find("input[name=email]").val(jQuery(linha).children("td:eq(1)").text());
+    jQuery("#modalEdita").find("input[name=usuario]").val(jQuery(linha).children("td:eq(2)").text());
+    jQuery("#modalEdita").find("input[name=id]").val(jQuery(linha).attr("cod"));
+    jQuery("#modalEdita").modal("show");
 });
 
 jQuery(".editarEstudante").click(function(e) {
@@ -55,25 +51,18 @@ jQuery(".editarEstudante").click(function(e) {
     jQuery("#modalInsereEditaEstudante").modal("show");
 });
 
-jQuery("#formInsereEdita").submit(function(e) {
+jQuery("#formInsere").submit(function(e) {
     e.preventDefault();
-    /*if((jQuery("#formInsereEdita").find("input[name=nome]").val() == "")
-            || (jQuery("#formInsereEdita").find("input[name=email]").val() == "")
-            || (jQuery("#formInsereEdita").find("input[name=usuario]").val() == "")
-            || (jQuery("#formInsereEdita").find("input[name=senha]").val() == "")) {
-        alert("Campo obrigatório não preenchido");
-        return false;
-    }*/
-    if((jQuery("#formInsereEdita").find("input[name=nome]").val() == "")
-            || (jQuery("#formInsereEdita").find("input[name=email]").val() == "")
-            || (jQuery("#formInsereEdita").find("input[name=usuario]").val() == "")) {
+    if((jQuery("#formInsere").find("input[name=nome]").val() == "")
+            || (jQuery("#formInsere").find("input[name=email]").val() == "")
+            || (jQuery("#formInsere").find("input[name=usuario]").val() == "")
+            || (jQuery("#formInsere").find("input[name=senha]").val() == "")) {
         alert("Campo obrigatório não preenchido");
         return false;
     }
     
-    
-    var dados = jQuery("#formInsereEdita").serialize();
-    var acao = jQuery("#formInsereEdita").attr("action");
+    var dados = jQuery("#formInsere").serialize();
+    var acao = jQuery("#formInsere").attr("action");
     jQuery.ajax({
         url: "class/index.php?acao="+acao,
         data: dados,
@@ -82,14 +71,14 @@ jQuery("#formInsereEdita").submit(function(e) {
             var retornoPost = JSON.parse(retornoPost);
             if(!retornoPost.erro) {
                 jQuery("#status .modal-title").html("Sucesso");
-                var valores = jQuery("#formInsereEdita").serializeArray();
-                jQuery("#modalInsereEdita").modal("hide");
-                jQuery("#formInsereEdita").trigger("reset");
+                var valores = jQuery("#formInsere").serializeArray();
+                jQuery("#modalInsere").modal("hide");
+                jQuery("#formInsere").trigger("reset");
                 
                 if (acao == "InsereUsuario") {
                     var linha = "<tr cod="+retornoPost.id+"><br>";
                     jQuery.each(valores, function (indice, valor) {
-                        if((valor.name != "id") && (valor.name != "senha")) {
+                        if((valor.name != "id") && (valor.name != "senha") && (valor.name != "nome")) {
                             linha += "  <td>"+valor.value+"</td><br>";
                         }
                     });
@@ -107,11 +96,44 @@ jQuery("#formInsereEdita").submit(function(e) {
                     var tabela = jQuery(".table tbody");
                     tabela.append(linha);
                 }
+            } else {
+                jQuery("#status .modal-title").html("Erro");
+            }
+            jQuery("#status .modal-body").html(retornoPost.msg);
+            jQuery("#status").modal("show");
+            //alert(retornoPost.msg);
+        },
+        async: false
+    });
+    return false;
+});
+
+jQuery("#formEdita").submit(function(e) {
+    e.preventDefault();
+    if((jQuery("#formEdita").find("input[name=nome]").val() == "")
+            || (jQuery("#formEdita").find("input[name=email]").val() == "")
+            || (jQuery("#formEdita").find("input[name=usuario]").val() == "")) {
+        alert("Campo obrigatório não preenchido");
+        return false;
+    }
+    
+    var dados = jQuery("#formEdita").serialize();
+    var acao = jQuery("#formEdita").attr("action");
+    jQuery.ajax({
+        url: "class/index.php?acao="+acao,
+        data: dados,
+        type: 'POST',
+        success: function (retornoPost) {
+            var retornoPost = JSON.parse(retornoPost);
+            if(!retornoPost.erro) {
+                jQuery("#status .modal-title").html("Sucesso");
+                var valores = jQuery("#formEdita").serializeArray();
+                jQuery("#modalEdita").modal("hide");
+                jQuery("#formEdita").trigger("reset");
                 if (acao == "EditaUsuario") {
-                    var linha = ".table tbody tr[cod="+valores[4].value+"] "; 
-                    jQuery(linha+"td:eq(0)").text(valores[0].value);
+                    var linha = ".table tbody tr[cod="+valores[3].value+"] "; 
+                    jQuery(linha+"td:eq(0))").text(valores[0].value);
                     jQuery(linha+"td:eq(1)").text(valores[1].value);
-                    jQuery(linha+"td:eq(2)").text(valores[2].value);
                 }
             } else {
                 jQuery("#status .modal-title").html("Erro");
