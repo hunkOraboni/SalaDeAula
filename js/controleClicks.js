@@ -8,48 +8,58 @@ jQuery(".btnLogin").click(function(e) {
 jQuery(".btnRegistrar").click(function(e) {
     e.preventDefault();
     jQuery("#modalInsere").find("form").attr("action","InsereUsuario");
-    
     jQuery("#formInsere").trigger("reset");
     jQuery("#modalInsere").modal("show");
+    jQuery("#modalInsere").find('span.form-group-addon[title="textoTitulacao"]').hide();
+    jQuery("#modalInsere").find("input[name=titulacao]").hide();
+    jQuery("#modalInsere").find('span.form-group-addon[title="textoAtuacao"]').hide();
+    jQuery("#modalInsere").find("input[name=areaAtuacao]").hide();
+    jQuery("#radioProfessor").click(function (e){
+        jQuery("#modalInsere").find('span.form-group-addon[title="textoTitulacao"]').show();
+        jQuery("#modalInsere").find("input[name=titulacao]").show();
+        jQuery("#modalInsere").find('span.form-group-addon[title="textoAtuacao"]').show();
+    jQuery("#modalInsere").find("input[name=areaAtuacao]").show();
+    });
+    jQuery("#radioEstudante").click(function (e){
+        //jQuery("#modalInsere").style.visible
+        jQuery("#modalInsere").find('span.form-group-addon[title="textoTitulacao"]').hide();
+        jQuery("#modalInsere").find("input[name=titulacao]").hide();
+        jQuery("#modalInsere").find('span.form-group-addon[title="textoAtuacao"]').hide();
+    jQuery("#modalInsere").find("input[name=areaAtuacao]").hide();
+    });
 });
 
-jQuery(".btnRegistrarEstudante").click(function(e) {
-    e.preventDefault();
-    jQuery("#modalInsereEditaEstudante .modal-title").html("Registrar");
-    jQuery("#modalInsereEditaEstudante").find("button[type=submit]").html("Registrar");
-    jQuery("#modalInsereEditaEstudante").find("form").attr("action","InsereEstudante");
-    
-    jQuery("#modalInsereEditaEstudante").trigger("reset");
-    jQuery("#modalInsereEditaEstudante").modal("show");
-});
-
-jQuery(".editar").click(function(e) {
-    e.preventDefault();
-    var linha = jQuery(this).closest("tr");
-    
-    jQuery("#modalEdita").find("form").attr("action", "EditaUsuario");
-    
-    jQuery("#modalEdita").find("input[name=nome]").val(jQuery(linha).children("td:eq(0)").text());
-    jQuery("#modalEdita").find("input[name=email]").val(jQuery(linha).children("td:eq(1)").text());
-    jQuery("#modalEdita").find("input[name=usuario]").val(jQuery(linha).children("td:eq(2)").text());
-    jQuery("#modalEdita").find("input[name=id]").val(jQuery(linha).attr("cod"));
-    jQuery("#modalEdita").modal("show");
-});
 
 jQuery(".editarEstudante").click(function(e) {
     e.preventDefault();
     var linha = jQuery(this).closest("tr");
     
-    jQuery("#modalInsereEditaEstudante .modal-title").html("Editar");
-    jQuery("#modalInsereEditaEstudante").find("button[type=submit]").html("Editar");
-    jQuery("#modalInsereEditaEstudante").find("form").attr("action", "EditaEstudante");
+    jQuery("#modalEditaEstudante").find("button[type=submit]").html("Editar");
+    jQuery("#modalEditaEstudante").find("form").attr("action", "EditaEstudante");
     
-    jQuery("#modalInsereEditaEstudante").find("input[name=nome]").val(jQuery(linha).children("td:eq(0)").text());
-    jQuery("#modalInsereEditaEstudante").find("input[name=email]").val(jQuery(linha).children("td:eq(1)").text());
-    jQuery("#modalInsereEditaEstudante").find("input[name=usuario]").val(jQuery(linha).children("td:eq(2)").text());
-    jQuery("#modalInsereEditaEstudante").find("input[name=id]").val(jQuery(linha).attr("cod"));
-    jQuery("#modalInsereEditaEstudante").modal("show");
+    jQuery("#modalEditaEstudante").find("input[name=nome]").val(jQuery(linha).children("td:eq(0)").text());
+    jQuery("#modalEditaEstudante").find("input[name=email]").val(jQuery(linha).children("td:eq(1)").text());
+    jQuery("#modalEditaEstudante").find("input[name=usuario]").val(jQuery(linha).children("td:eq(2)").text());
+    jQuery("#modalEditaEstudante").find("input[name=id]").val(jQuery(linha).attr("cod"));
+    jQuery("#modalEditaEstudante").modal("show");
 });
+
+jQuery(".editarProfessor").click(function(e) {
+    e.preventDefault();
+    var linha = jQuery(this).closest("tr");
+    
+    jQuery("#modalEditaProfessor").find("button[type=submit]").html("Editar");
+    jQuery("#modalEditaProfessor").find("form").attr("action", "EditaProfessor");
+    
+    jQuery("#modalEditaProfessor").find("input[name=nome]").val(jQuery(linha).children("td:eq(0)").text());
+    jQuery("#modalEditaProfessor").find("input[name=email]").val(jQuery(linha).children("td:eq(1)").text());
+    jQuery("#modalEditaProfessor").find("input[name=usuario]").val(jQuery(linha).children("td:eq(2)").text());
+    jQuery("#modalEditaProfessor").find("input[name=titulacao]").val(jQuery(linha).children("td:eq(3)").text());
+    jQuery("#modalEditaProfessor").find("input[name=areAtuacao]").val(jQuery(linha).children("td:eq(4)").text());
+    jQuery("#modalEditaProfessor").find("input[name=id]").val(jQuery(linha).attr("cod"));
+    jQuery("#modalEditaProfessor").modal("show");
+});
+
 
 jQuery("#formInsere").submit(function(e) {
     e.preventDefault();
@@ -112,7 +122,6 @@ jQuery("#formInsere").submit(function(e) {
     }
     return false;
 });
-
 jQuery("#formEdita").submit(function(e) {
     e.preventDefault();
     if((jQuery("#formEdita").find("input[name=nome]").val() == "")
@@ -157,25 +166,16 @@ jQuery("#formEdita").submit(function(e) {
     return false;
 });
 
-jQuery("#formInsereEditaEstudante").submit(function(e) {
+jQuery("#formEditaEstudante").submit(function(e) {
     e.preventDefault();
-    /*if((jQuery("#formInsereEdita").find("input[name=nome]").val() == "")
-            || (jQuery("#formInsereEdita").find("input[name=email]").val() == "")
-            || (jQuery("#formInsereEdita").find("input[name=usuario]").val() == "")
-            || (jQuery("#formInsereEdita").find("input[name=senha]").val() == "")) {
-        alert("Campo obrigatório não preenchido");
-        return false;
-    }*/
-    if((jQuery("#formInsereEditaEstudante").find("input[name=nome]").val() == "")
-            || (jQuery("#formInsereEditaEstudante").find("input[name=email]").val() == "")
-            || (jQuery("#formInsereEditaEstudante").find("input[name=usuario]").val() == "")) {
+    if((jQuery("#formEditaEstudante").find("input[name=nome]").val() == "")
+            || (jQuery("#formEditaEstudante").find("input[name=email]").val() == "")
+            || (jQuery("#formEditaEstudante").find("input[name=usuario]").val() == "")) {
         alert("Campo obrigatório não preenchido");
         return false;
     }
-    
-    
-    var dados = jQuery("#formInsereEditaEstudante").serialize();
-    var acao = jQuery("#formInsereEditaEstudante").attr("action");
+    var dados = jQuery("#formEditaEstudante").serialize();
+    var acao = jQuery("#formEditaEstudante").attr("action");
     jQuery.ajax({
         url: "class/index.php?acao="+acao,
         data: dados,
@@ -184,41 +184,12 @@ jQuery("#formInsereEditaEstudante").submit(function(e) {
             var retornoPost = JSON.parse(retornoPost);
             if(!retornoPost.erro) {
                 jQuery("#status .modal-title").html("Sucesso");
-                var valores = jQuery("#formInsereEditaEstudante").serializeArray();
-                jQuery("#modalInsereEditaEstudante").modal("hide");
-                jQuery("#formInsereEditaEstudante").trigger("reset");
-                
-                /*
-                if (acao == "InsereEstudante") {
-                    var linha = "<tr cod="+retornoPost.id+"><br>";
-                    jQuery.each(valores, function (indice, valor) {
-                        if((valor.name != "id") && (valor.name != "senha")) {
-                            linha += "  <td>"+valor.value+"</td><br>";
-                        }
-                    });
-                    linha += 
-                            "   <td>  "+
-                                    "<button type='button' class='btn btn-info editar' data-toggle='modal' data-target='#' cod='"+retornoPost.id+"'>"+
-                                            "<span class='glyphicon glyphicon-pencil'></span>"+
-                                    "</button><br>"+
-                            "   </td><br>"+
-                            "<td>"+
-                                    "<button type='button' class='btn btn-danger remover' data-toggle='modal' data-target='#confirma' cod='"+retornoPost.id+"'>"+
-                                            "<span class='glyphicon glyphicon-trash remover'></span>"+
-                                    "</button><br>"+
-                            "</td><br>";
-                    var tabela = jQuery(".table tbody");
-                    tabela.append(linha);
-                }
-                if (acao == "EditaEstudante") {
-                    var linha = ".table tbody tr[cod="+valores[4].value+"] "; 
-                    jQuery(linha+"td:eq(0)").text(valores[0].value);
-                    jQuery(linha+"td:eq(1)").text(valores[1].value);
-                    jQuery(linha+"td:eq(2)").text(valores[2].value);
-                }
-                */
+                var valores = jQuery("#formEditaEstudante").serializeArray();
+                jQuery("#modalEditaEstudante").modal("hide");
+                jQuery("#formEditaEstudante").trigger("reset");
             } else {
                 jQuery("#status .modal-title").html("Erro");
+                jQuery("#formEditaEstudante").modal("hide");
             }
             jQuery("#status .modal-body").html(retornoPost.msg);
             jQuery("#status").modal("show");
@@ -227,6 +198,44 @@ jQuery("#formInsereEditaEstudante").submit(function(e) {
         async: false
     });
     if((location.search == "?acao=ListaUsuario") || (location.search == "?acao=ListaEstudante")) {
+        setTimeout(location.reload(), 2000);
+    }
+    return false;
+});
+
+jQuery("#formEditaProfessor").submit(function(e) {
+    e.preventDefault();
+    if((jQuery("#formEditaProfessor").find("input[name=nome]").val() == "")
+            || (jQuery("#formEditaProfessor").find("input[name=email]").val() == "")
+            || (jQuery("#formEditaProfessor").find("input[name=usuario]").val() == "")
+            || (jQuery("#formEditaProfessor").find("input[name=titulacao]").val() == "")) {
+        alert("Campo obrigatório não preenchido");
+        return false;
+    }
+    var dados = jQuery("#formEditaProfessor").serialize();
+    var acao = jQuery("#formEditaProfessor").attr("action");
+    jQuery.ajax({
+        url: "class/index.php?acao="+acao,
+        data: dados,
+        type: 'POST',
+        success: function (retornoPost) {
+            var retornoPost = JSON.parse(retornoPost);
+            if(!retornoPost.erro) {
+                jQuery("#status .modal-title").html("Sucesso");
+                var valores = jQuery("#formEditaEstudante").serializeArray();
+                jQuery("#modalEditaProfessor").modal("hide");
+                jQuery("#formEditaProfessor").trigger("reset");
+            } else {
+                jQuery("#status .modal-title").html("Erro");
+                jQuery("#formEditaProfessor").modal("hide");
+            }
+            jQuery("#status .modal-body").html(retornoPost.msg);
+            jQuery("#status").modal("show");
+            //alert(retornoPost.msg);
+        },
+        async: false
+    });
+    if((location.search == "?acao=ListaUsuario") || (location.search == "?acao=ListaProfessor")) {
         setTimeout(location.reload(), 2000);
     }
     return false;

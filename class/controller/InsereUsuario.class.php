@@ -15,7 +15,22 @@ class InsereUsuario {
             $opcao = $_POST["classificacao"];
             if($opcao == "1") {
                 // crud professor
-
+                
+                $camposProfessor = array("nome", "email", "senha", "titulacao", "areaAtuacao", "idUsuario");
+                $_POST["idUsuario"] = $retornoUsuario["id"];
+                $insereProfessor = new Insere("professor", $camposProfessor);
+                $retornoProfessor = $insereProfessor->model();
+                if($retornoProfessor["erro"]) {
+                    $retorno = $retornoProfessor;
+                    return $retorno;
+                }
+                //$retorno["idUsuario"] = $retornoUsuario["id"];
+                //$retorno["usuario"] = $_POST["usuario"];
+                //$retorno["idEstudante"] = $retornoEstudante["id"];
+                $retorno["erro"] = false;
+                $retorno["msg"] = "Usuário criado com sucesso!\n";
+                
+            
             } else if ($opcao == "2") {
                 // crud estudante
                 $camposEstudante = array("nome", "email", "senha", "idUsuario");
