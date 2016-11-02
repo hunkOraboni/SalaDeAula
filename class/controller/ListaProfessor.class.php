@@ -32,7 +32,7 @@ class ListaProfessor {
                 $retorno["msg"] = $paginaListaProfessor->saida();
             } else {
                 $retorno["erro"] = true;
-                $retorno["msg"] = "Erro de processamento\n".$listaDados["msg"]."\n";
+                $retorno["msg"] = "Erro de processamento\n".$resultado["msg"]."\n";
             }
         } catch (Exception $ex) {
             $retorno["erro"] = true;

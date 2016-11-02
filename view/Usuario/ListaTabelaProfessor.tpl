@@ -1,8 +1,8 @@
 <tr cod="[@cod]">
     <td>[@nome]</td>
     <td>[@email]</td>
-    <td>[@titulacao]<td>
-    <td>[@areaAtuacao]<td>
+    <td>[@titulacao]</td>
+    <td>[@areaAtuacao]</td>
     <td idUsuario="[@idUsuario]">[@usuario]</td>
     <td>  
         <button type="button" class="btn btn-info editarProfessor" data-toggle="modal" data-target="" cod="[@cod]">  

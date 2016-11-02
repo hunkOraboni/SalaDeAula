@@ -53,9 +53,9 @@ jQuery(".editarProfessor").click(function(e) {
     
     jQuery("#modalEditaProfessor").find("input[name=nome]").val(jQuery(linha).children("td:eq(0)").text());
     jQuery("#modalEditaProfessor").find("input[name=email]").val(jQuery(linha).children("td:eq(1)").text());
-    jQuery("#modalEditaProfessor").find("input[name=usuario]").val(jQuery(linha).children("td:eq(2)").text());
-    jQuery("#modalEditaProfessor").find("input[name=titulacao]").val(jQuery(linha).children("td:eq(3)").text());
-    jQuery("#modalEditaProfessor").find("input[name=areAtuacao]").val(jQuery(linha).children("td:eq(4)").text());
+    jQuery("#modalEditaProfessor").find("input[name=usuario]").val(jQuery(linha).children("td:eq(4)").text());
+    jQuery("#modalEditaProfessor").find("input[name=titulacao]").val(jQuery(linha).children("td:eq(2)").text());
+    jQuery("#modalEditaProfessor").find("input[name=areaAtuacao]").val(jQuery(linha).children("td:eq(3)").text());
     jQuery("#modalEditaProfessor").find("input[name=id]").val(jQuery(linha).attr("cod"));
     jQuery("#modalEditaProfessor").modal("show");
 });
