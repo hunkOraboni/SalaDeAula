@@ -11,7 +11,6 @@ class ListaUsuario {
                 foreach ($resultado["msg"] as $usuario) {
                     $linhaTabela = new Template("view/Usuario/ListaTabelaUsuario.tpl");
                     $linhaTabela->set("cod", $usuario->id);
-                    $linhaTabela->set("nome", $usuario->nome);
                     $linhaTabela->set("email", $usuario->email);
                     $linhaTabela->set("usuario", $usuario->usuario);
                     $usuarios[] = $linhaTabela;

@@ -2,9 +2,8 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th> Nome </th>
-                <th> E-Mail </th>
                 <th> Usuário </th>
+                <th> E-Mail </th>
                 <th> Editar </th>
                 <th> Remover </th>
             </tr>

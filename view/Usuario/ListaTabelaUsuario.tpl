@@ -1,7 +1,6 @@
 <tr cod="[@cod]">
-    <td>[@nome]</td>
-    <td>[@email]</td>
     <td>[@usuario]</td>
+    <td>[@email]</td>
     <td>  
         <button type="button" class="btn btn-info editar" data-toggle="modal" data-target="" cod="[@cod]">  
             <span class="glyphicon glyphicon-pencil"></span>
