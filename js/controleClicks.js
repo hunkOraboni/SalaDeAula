@@ -1,127 +1,173 @@
 jQuery(".btnLogin").click(function(e) {
-    e.preventDefault();
-    jQuery("#modalLogin").trigger("reset");
-    jQuery("#modalLogin").find("form").attr("action","LoginUsuario");
-    jQuery("#modalLogin").modal("show");
+    // Previne que o browser abra o link
+    e.preventDefault(); 
+
+    // Encontra os elementos do html
+    var $modalLogin = $("#modalLogin");
+    var $formLogin = $modalLogin.find("form");
+
+    // Define a ação do PHP
+    $formLogin.attr("action", "LoginUsuario");
+
+    // Limpa o formulário e mostra 
+    $formLogin.trigger("reset");
+    $modalLogin.modal("show");
 });
 
-jQuery(".btnRegistrar").click(function(e) {
-    e.preventDefault();
-    jQuery("#modalInsere").find("form").attr("action","InsereUsuario");
-    jQuery("#formInsere").trigger("reset");
-    jQuery("#modalInsere").modal("show");
-    jQuery("#modalInsere").find('span.form-group-addon[title="textoTitulacao"]').hide();
-    jQuery("#modalInsere").find("input[name=titulacao]").hide();
-    jQuery("#modalInsere").find('span.form-group-addon[title="textoAtuacao"]').hide();
-    jQuery("#modalInsere").find("input[name=areaAtuacao]").hide();
-    jQuery("#radioProfessor").click(function (e){
-        jQuery("#modalInsere").find('span.form-group-addon[title="textoTitulacao"]').show();
-        jQuery("#modalInsere").find("input[name=titulacao]").show();
-        jQuery("#modalInsere").find('span.form-group-addon[title="textoAtuacao"]').show();
-    jQuery("#modalInsere").find("input[name=areaAtuacao]").show();
+$(".btnRegistrar").click(function(e) {
+    // Previne que o browser abra o link
+    e.preventDefault(); 
+
+    // Encontra os elementos do html
+    var $modalInsere = $("#modalInsere");
+    var $formInsere = $modalInsere.find("form");
+    var $radioEstudante = $formInsere.find("#radioEstudante");
+    var $radioProfessor = $formInsere.find("#radioProfessor");
+    var $dadosProfessor = $formInsere.find(".dados-professor");
+
+    // Define a ação do PHP
+    $formInsere.attr("action", "InsereUsuario");
+
+    // Limpa o formulário e mostra 
+    $formInsere.trigger("reset");
+    $dadosProfessor.hide();
+    $radioEstudante.prop("checked", true);
+    $modalInsere.modal("show");
+
+    // Ações para os Radio Buttons
+    $radioProfessor.click(function (e) {
+        $dadosProfessor.slideDown("fast");
     });
-    jQuery("#radioEstudante").click(function (e){
-        //jQuery("#modalInsere").style.visible
-        jQuery("#modalInsere").find('span.form-group-addon[title="textoTitulacao"]').hide();
-        jQuery("#modalInsere").find("input[name=titulacao]").hide();
-        jQuery("#modalInsere").find('span.form-group-addon[title="textoAtuacao"]').hide();
-    jQuery("#modalInsere").find("input[name=areaAtuacao]").hide();
+    $radioEstudante.click(function (e) {
+        $dadosProfessor.slideUp("fast");
     });
 });
 
-
-jQuery(".editarEstudante").click(function(e) {
+// Edição desativada por enquanto. É necessário o sistema de logins para prosseguir.
+/*
+$(".editarEstudante").click(function(e) {
+    // Previne que o browser abra o link
     e.preventDefault();
-    var linha = jQuery(this).closest("tr");
+
+    // Encontra os elementos html e busca a tabela por php
+    var $linha = $this.closest("tr");
+    var $modalEditaEstudante = $("#modalEditaEstudante");
+
+    // Define a ação do PHP
+    $modalEditaEstudante.find("form").attr("action", "EditaEstudante");
+
+    // Encontra e preenche os campos com os dados atuais
+    var $nome = $modalEditaEstudante.find("input[name=nome]");
+    var $email = $modalEditaEstudante.find("input[name=email]");
+    var $usuario = $modalEditaEstudante.find("input[name=usuario]");
+    var $id = $modalEditaEstudante.find("input[name=id]");
+    $nome.val($linha.children("td:eq(0)").text());
+    $email.val($linha.children("td:eq(1)").text());
+    $usuario.val($linha.children("td:eq(2)").text());
+    $id.val($linha.attr("cod"));
     
-    jQuery("#modalEditaEstudante").find("button[type=submit]").html("Editar");
-    jQuery("#modalEditaEstudante").find("form").attr("action", "EditaEstudante");
-    
-    jQuery("#modalEditaEstudante").find("input[name=nome]").val(jQuery(linha).children("td:eq(0)").text());
-    jQuery("#modalEditaEstudante").find("input[name=email]").val(jQuery(linha).children("td:eq(1)").text());
-    jQuery("#modalEditaEstudante").find("input[name=usuario]").val(jQuery(linha).children("td:eq(2)").text());
-    jQuery("#modalEditaEstudante").find("input[name=id]").val(jQuery(linha).attr("cod"));
-    jQuery("#modalEditaEstudante").modal("show");
+    // Mostra o modal
+    $modalEditaEstudante.modal("show");
 });
 
-jQuery(".editarProfessor").click(function(e) {
+$(".editarProfessor").click(function(e) {
+    // Previne que o browser abra o link
     e.preventDefault();
-    var linha = jQuery(this).closest("tr");
+
+    // Encontra os elementos html e busca a tabela por php
+    var $linha = $this.closest("tr");
+    var $modalEditaProfessor = $("#modalEditaProfessor");
     
-    jQuery("#modalEditaProfessor").find("button[type=submit]").html("Editar");
-    jQuery("#modalEditaProfessor").find("form").attr("action", "EditaProfessor");
+    // Define a ação do PHP
+    $modalEditaProfessor.find("form").attr("action", "EditaProfessor");
     
-    jQuery("#modalEditaProfessor").find("input[name=nome]").val(jQuery(linha).children("td:eq(0)").text());
-    jQuery("#modalEditaProfessor").find("input[name=email]").val(jQuery(linha).children("td:eq(1)").text());
-    jQuery("#modalEditaProfessor").find("input[name=usuario]").val(jQuery(linha).children("td:eq(4)").text());
-    jQuery("#modalEditaProfessor").find("input[name=titulacao]").val(jQuery(linha).children("td:eq(2)").text());
-    jQuery("#modalEditaProfessor").find("input[name=areaAtuacao]").val(jQuery(linha).children("td:eq(3)").text());
-    jQuery("#modalEditaProfessor").find("input[name=id]").val(jQuery(linha).attr("cod"));
-    jQuery("#modalEditaProfessor").modal("show");
+    // Encontra e preenche os campos com os dados atuais
+    var $nome = $modalEditaProfessor.find("input[name=nome]");
+    var $email = $modalEditaProfessor.find("input[name=email]");
+    var $titulacao = $modalEditaProfessor.find("input[name=titulacao]");
+    var $areaAtuacao = $modalEditaProfessor.find("input[name=areaAtuacao]");
+    var $usuario = $modalEditaProfessor.find("input[name=usuario]");
+    var $id = $modalEditaProfessor.find("input[name=id]");
+    $nome.val($linha.children("td:eq(0)").text());
+    $email.val($linha.children("td:eq(1)").text());
+    $titulacao.val($linha.children("td:eq(2)").text());
+    $areaAtuacao.val($linha.children("td:eq(3)").text());
+    $usuario.val($linha.children("td:eq(4)").text());
+    $id.val($linha.attr("cod"));
+
+    // Mostra o modal
+    $modalEditaProfessor.modal("show");
 });
+*/
 
+function validarCampos() {
+    var camposPreenchidos = true;
 
-jQuery("#formInsere").submit(function(e) {
+    // Encontra form do html
+    var $formInsere = $("#formInsere");
+
+    // Verificar campos que pertencem a ambos
+    $formInsere.find("input.obrigatorio").each(function() {
+        if(!$(this).val()) {
+            return camposPreenchidos = false;
+        }
+    });
+
+    // Verificar campos específicos do professor
+    var isProfessor = $formInsere.find("#radioProfessor").is(":checked");
+    if(isProfessor) {
+        $formInsere.find("input.obrigatorio-prof").each(function() {
+            if(!$(this).val()) {
+                return camposPreenchidos = false;
+            }
+        });
+    }
+
+    return camposPreenchidos; 
+}
+
+$("#formInsere").submit(function(e) {
+    // Previne que o browser abra o link
     e.preventDefault();
-    if((jQuery("#formInsere").find("input[name=nome]").val() == "")
-            || (jQuery("#formInsere").find("input[name=email]").val() == "")
-            || (jQuery("#formInsere").find("input[name=usuario]").val() == "")
-            || (jQuery("#formInsere").find("input[name=senha]").val() == "")) {
+    
+    // Verifica se todos os campos necessários foram preenchidos
+    if(!validarCampos()) {
         alert("Campo obrigatório não preenchido");
         return false;
     }
-    
-    var dados = jQuery("#formInsere").serialize();
-    var acao = jQuery("#formInsere").attr("action");
-    jQuery.ajax({
+
+    // Encontra form do html e monta o json com seus dados
+    var $formInsere = $("#formInsere");
+    var dados = $formInsere.serialize();
+
+    // Define a ação do PHP
+    var acao = $formInsere.attr("action");
+
+    $.ajax({
         url: "class/index.php?acao="+acao,
         data: dados,
         type: 'POST',
         success: function (retornoPost) {
+            // Recebe a resposta e mostra se ocorreu erro ou não
             var retornoPost = JSON.parse(retornoPost);
-            if(!retornoPost.erro) {
-                jQuery("#status .modal-title").html("Sucesso");
-                var valores = jQuery("#formInsere").serializeArray();
-                jQuery("#modalInsere").modal("hide");
-                jQuery("#formInsere").trigger("reset");
-                
-                /*
-                if (acao == "InsereUsuario") {
-                    var linha = "<tr cod="+retornoPost.id+"><br>";
-                    jQuery.each(valores, function (indice, valor) {
-                        if((valor.name != "id") && (valor.name != "senha") && (valor.name != "nome")) {
-                            linha += "  <td>"+valor.value+"</td><br>";
-                        }
-                    });
-                    linha += 
-                            "   <td>  "+
-                                    "<button type='button' class='btn btn-info editar' data-toggle='modal' data-target='#' cod='"+retornoPost.id+"'>"+
-                                            "<span class='glyphicon glyphicon-pencil'></span>"+
-                                    "</button><br>"+
-                            "   </td><br>"+
-                            "<td>"+
-                                    "<button type='button' class='btn btn-danger remover' data-toggle='modal' data-target='#confirma' cod='"+retornoPost.id+"'>"+
-                                            "<span class='glyphicon glyphicon-trash remover'></span>"+
-                                    "</button><br>"+
-                            "</td><br>";
-                    var tabela = jQuery(".table tbody");
-                    tabela.append(linha);
-                }
-                */
-            } else {
-                jQuery("#status .modal-title").html("Erro");
-            }
-            jQuery("#status .modal-body").html(retornoPost.msg);
-            jQuery("#status").modal("show");
-            //alert(retornoPost.msg);
+            $("#modalInsere").modal("hide");
+            $("#status .modal-title").html(retornoPost.erro ? "Erro":"Sucesso");
+            $("#status .modal-body").html(retornoPost.msg);
+            $("#status").modal("show");
         },
         async: false
     });
-    if((location.search == "?acao=ListaUsuario") || (location.search == "?acao=ListaEstudante")) {
+
+    // se a operação foi feita numa página de listagem, atualiza a página
+    if(location.search.includes("acao=Lista")) {
         setTimeout(location.reload(), 2000);
     }
+
     return false;
 });
+
+// Edição desativada por enquanto. É necessário o sistema de logins para prosseguir.
+/*
 jQuery("#formEdita").submit(function(e) {
     e.preventDefault();
     if((jQuery("#formEdita").find("input[name=nome]").val() == "")
@@ -144,6 +190,7 @@ jQuery("#formEdita").submit(function(e) {
                 var valores = jQuery("#formEdita").serializeArray();
                 jQuery("#modalEdita").modal("hide");
                 jQuery("#formEdita").trigger("reset");
+                */
                 /*
                 if (acao == "EditaUsuario") {
                     var linha = ".table tbody tr[cod="+valores[3].value+"] "; 
@@ -151,6 +198,7 @@ jQuery("#formEdita").submit(function(e) {
                     jQuery(linha+"td:eq(1)").text(valores[1].value);
                 }
                 */
+                /*
             } else {
                 jQuery("#status .modal-title").html("Erro");
             }
@@ -240,28 +288,33 @@ jQuery("#formEditaProfessor").submit(function(e) {
     }
     return false;
 });
+*/
 
-
-jQuery(".remover").click(function(e) {
-    var linha = jQuery(this).closest("tr");
-    var cod = jQuery(linha).attr("cod");
-    jQuery("#confirma").modal("show");
-    jQuery("#sim").click(function(e) {
+$(".remover").click(function(e) {
+    // Encontra a linha e o modal de confirmação
+    var $linha = $(this).closest("tr");
+    var $modalRemocao = $("#confirmaRemocao");
+    
+    // Descobre a id do usuário a ser removido
+    var cod = $linha.attr("cod");
+    
+    $modalRemocao.modal("show");
+    $("#sim").click(function(e) {
         e.preventDefault();
-        jQuery("#confirma").modal("hide");
-        jQuery.ajax({
+        $modalRemocao.modal("hide");
+        $.ajax({
             type: 'GET',
-            url: "class/index.php?acao=RemoveUsuario&id="+cod,
+            url: "class/index.php?acao=RemoveUsuario&id=" + cod,
             success: function (retornoRemove) {
                 var retornoRemove = JSON.parse(retornoRemove);
                 if(!retornoRemove.erro) {
-                    jQuery("#status .modal-title").html("Sucesso");
-                    linha.remove();
+                    $("#status .modal-title").html("Sucesso");
+                    $linha.remove();
                 } else {
-                    jQuery("#status .modal-title").html("Erro");
+                    $("#status .modal-title").html("Erro");
                 }
-                jQuery("#status .modal-body").html(retornoRemove.msg);
-                jQuery("#status").modal("show");
+                $("#status .modal-body").html(retornoRemove.msg);
+                $("#status").modal("show");
             },
             async: false
         });
@@ -269,26 +322,26 @@ jQuery(".remover").click(function(e) {
     return false;
 });
 
-jQuery(".removerEstudante").click(function(e) {
-    var linha = jQuery(this).closest("tr");
-    var cod = jQuery(linha).attr("cod");
-    jQuery("#confirma").modal("show");
-    jQuery("#sim").click(function(e) {
+$(".removerEstudante").click(function(e) {
+    var $linha = $(this).closest("tr");
+    var cod = $linha.attr("cod");
+    $("#confirma").modal("show");
+    $("#sim").click(function(e) {
         e.preventDefault();
-        jQuery("#confirma").modal("hide");
-        jQuery.ajax({
+        $("#confirma").modal("hide");
+        $.ajax({
             type: 'GET',
             url: "class/index.php?acao=RemoveEstudante&id="+cod,
             success: function (retornoRemove) {
                 var retornoRemove = JSON.parse(retornoRemove);
                 if(!retornoRemove.erro) {
-                    jQuery("#status .modal-title").html("Sucesso");
+                    $("#status .modal-title").html("Sucesso");
                     linha.remove();
                 } else {
-                    jQuery("#status .modal-title").html("Erro");
+                    $("#status .modal-title").html("Erro");
                 }
-                jQuery("#status .modal-body").html(retornoRemove.msg);
-                jQuery("#status").modal("show");
+                $("#status .modal-body").html(retornoRemove.msg);
+                $("#status").modal("show");
             },
             async: false
         });
@@ -296,12 +349,12 @@ jQuery(".removerEstudante").click(function(e) {
     return false;
 });
 
-jQuery("#formLogin").submit(function(e) {
+$("#formLogin").submit(function(e) {
     e.preventDefault();
-    var dados = jQuery("#formLogin").serialize();
-    var acao = jQuery("#formLogin").attr("action");
+    var dados = $("#formLogin").serialize();
+    var acao = $("#formLogin").attr("action");
     console.log(dados);
-    jQuery.ajax({
+    $.ajax({
         url: "class/index.php?acao="+acao,
         data: dados,
         type: 'POST',
@@ -314,10 +367,10 @@ jQuery("#formLogin").submit(function(e) {
         },
         async: false
     });
-    jQuery("#formLogin").trigger("reset");
-    jQuery("#modalLogin").find("form").attr("action", "");
+    $("#formLogin").trigger("reset");
+    $("#modalLogin").find("form").attr("action", "");
 });
 
-jQuery().click(function(e) {
+$.click(function(e) {
     e.preventDefault();
 });
