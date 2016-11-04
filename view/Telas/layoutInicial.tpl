@@ -12,87 +12,36 @@
     <title>Sala de Aula</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../view/Telas/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="../view/Telas/css/sb-admin.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../view/Telas/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 </head>
 
 <body>
 
     <div id="wrapper">
-
+        
         <!-- Navigation -->
         <nav id="barraNavegacao" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
+                
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <img src="../view/images/logo.png" alt="" width="40px" height="40px" />
                 <a class="navbar-brand" href="index.html">Sala de Aula</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu alert-dropdown">
@@ -140,7 +89,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#curso"><i class="fa fa-fw fa-arrows-v"></i> Curso <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a data-toggle="collapse" data-target="#curso"><i class="fa fa-fw fa-arrow-circle-right"></i> Curso <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="curso" class="collapse">
                             <li>
                                 <a href="?insereCurso">Adicionar Cursos</a>
@@ -151,19 +100,19 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#curso"><i class="fa fa-fw fa-arrows-v"></i> Matéria <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="curso" class="collapse">
+                        <a data-toggle="collapse" data-target="#materia"><i class="fa fa-fw fa-arrow-circle-right"></i> Matéria <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="materia" class="collapse">
                             <li>
                                 <a href="?insereCurso">Buscar Matérias</a>
                             </li>
                             <li>
-                                <a href="?visualizaCurso"> Adiciona Matéria</a>
+                                <a href="?visualizaCurso"> Adicionar Matéria</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#curso"><i class="fa fa-fw fa-arrows-v"></i> Tópico <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="curso" class="collapse">
+                        <a data-toggle="collapse" data-target="#topico"><i class="fa fa-fw fa-arrow-circle-right"></i> Tópico <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="topico" class="collapse">
                             <li>
                                 <a href="?insereCurso">Buscar Tópico</a>
                             </li>
@@ -173,8 +122,8 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#curso"><i class="fa fa-fw fa-arrows-v"></i> Questão <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="curso" class="collapse">
+                        <a data-toggle="collapse" data-target="#questao"><i class="fa fa-fw fa-arrow-circle-right"></i> Questão <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="questao" class="collapse">
                             <li>
                                 <a href="?insereCurso">Buscar Questão</a>
                             </li>
@@ -184,10 +133,18 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Gerar Teste</a>
+                        <a data-toggle="collapse" data-target="#instituicao"><i class="fa fa-fw fa-arrow-circle-right"></i> Instituição de Ensino<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="instituicao" class="collapse">
+                            <li>
+                                <a href="?ranking">Buscar Instituição</a>
+                            </li>
+                            <li>
+                                <a href="?visualizaCurso">Adicionar Instituição</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#curso"><i class="fa fa-fw fa-arrows-v"></i> Ranking <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a data-toggle="collapse" data-target="#curso"><i class="fa fa-fw fa-arrow-circle-right"></i> Ranking <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="ranking" class="collapse">
                             <li>
                                 <a href="?ranking">Ranking por Cursos</a>
@@ -200,122 +157,30 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="index.html"><i class="fa fa-fw fa-envelope"></i> Gerar Testes</a>
+                    </li>
+                    <li>
+                        <a href="index.html"><i class="fa fa-fw fa-user"></i> Estudantes</a>
+                    </li>
+                    <li>
+                        <a href="index.html"><i class="fa fa-fw fa-user"></i> Professor</a>
+                    </li>
+                    <li>
+                        <a href="index.html"><i class="fa fa-fw fa-envelope"></i> Relatório de Questões</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </nav>
 
         <div id="page-wrapper">
-
-            <div class="container-fluid">
-
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Cursos
-                        </h1>
-                    </div>
+            <div>
+                <div class="conteudo">
+                    [@conteudo]
                 </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">CCO</div>
-                                        <div>Ciências da Computação</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">Informações</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">SIN</div>
-                                        <div >Sistemas de Informação</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">Informações</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">ECO</div>
-                                        <div>Engenharia de Computacao</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">Informações</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">EEL</div>
-                                        <div>Engenharia Elétrica</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">Informações</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">EEL</div>
-                                        <div>Engenharia Elétrica</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">Informações</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+            </div><!-- /.container -->
+            
             <!-- /.container-fluid -->
 
         </div>
@@ -323,13 +188,12 @@
 
     </div>
     <!-- /#wrapper -->
-
+    
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="../view/Telas/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
+    <script src="../view/Telas/js/bootstrap.min.js"></script>
 </body>
 
 </html>

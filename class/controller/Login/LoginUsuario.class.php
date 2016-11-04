@@ -83,7 +83,7 @@
         public function controller() {
             ControlaSessao::iniciaSessao();
             $controlador = new ControlaSessao();
-            var_dump($_POST);
+            //var_dump($_POST);
             if(isset($_POST["login"]) && isset($_POST["senha"])) {
                 $retorno = $this->fazLogin();
             } else {

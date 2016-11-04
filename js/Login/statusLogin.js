@@ -33,6 +33,7 @@ $("#formLogin").submit(function(e) {
     e.preventDefault();
     var dados = $("#formLogin").serialize();
     var acao = $("#formLogin").attr("action");
+    $("#modalLogin").modal("hide");
     $.ajax({
         url: "class/index.php?acao="+acao,
         data: dados,
@@ -40,14 +41,12 @@ $("#formLogin").submit(function(e) {
         success: function (retornoPost) {
             var retornoPost = JSON.parse(retornoPost);
             if(!retornoPost.erro) {
-                setTimeout(function() {
-                    window.location.replace("saladeaula.dev/view/Telas/layout.tpl")
-                }, 2000);
+                setTimeout(function() { window.location.replace("index.php?acao=ListaCurso")}, 2000);
             } else {
                 jQuery("#status .modal-title").html("Erro");
+                jQuery("#status .modal-body").html(retornoPost.msg);
+                jQuery("#status").modal("show");
             }
-            jQuery("#status .modal-body").html(retornoPost.msg);
-            jQuery("#status").modal("show");
             //alert(retornoPost.msg);
         },
         async: false

@@ -1,6 +1,6 @@
 <?php
     function __autoload($classe) {
-	$pastas = array('model', 'controller', 'controller/Login');
+	$pastas = array('model', 'controller', 'controller/Login', 'controller/EntidadesFisicas', 'controller/Curso');
 	foreach ($pastas as $pasta) {
             if (file_exists("class/{$pasta}/{$classe}.class.php")) {
                 include_once "class/{$pasta}/{$classe}.class.php";
@@ -11,6 +11,7 @@
     class Aplicacao {
 	public static function run() {
             // Monta Conteúdo
+            $layout = new Template("view/Telas/layoutInicial.tpl");
             $conteudo = "";
             if(isset($_GET["acao"])) {
                 $class = $_GET["acao"];
@@ -26,8 +27,6 @@
                     }
                     $conteudo = $retorno["msg"];
                 }
-            } else if(isset($_GET["paginaUsuario"])){
-                $layout = new Template("view/Telas/layoutInicial.tpl");
             } else {
                 // Pagina Inicial
                 $layout = new Template("view/layout.tpl");
