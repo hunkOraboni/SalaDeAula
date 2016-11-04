@@ -225,5 +225,6 @@
 	     
         <script type="text/javascript" src="bootstrap-3.3.7/dist/js/bootstrap.min.js" ></script>
         <script type="text/javascript" src="js/controleClicks.js"></script>
+        <script type="text/javascript" src="js/Login/statusLogin.js"></script>
     </body>
 </html>

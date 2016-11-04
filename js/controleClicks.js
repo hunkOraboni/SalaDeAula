@@ -1,19 +1,3 @@
-jQuery(".btnLogin").click(function(e) {
-    // Previne que o browser abra o link
-    e.preventDefault(); 
-
-    // Encontra os elementos do html
-    var $modalLogin = $("#modalLogin");
-    var $formLogin = $modalLogin.find("form");
-
-    // Define a ação do PHP
-    $formLogin.attr("action", "LoginUsuario");
-
-    // Limpa o formulário e mostra 
-    $formLogin.trigger("reset");
-    $modalLogin.modal("show");
-});
-
 $(".btnRegistrar").click(function(e) {
     // Previne que o browser abra o link
     e.preventDefault(); 
@@ -347,28 +331,6 @@ $(".removerEstudante").click(function(e) {
         });
     });
     return false;
-});
-
-$("#formLogin").submit(function(e) {
-    e.preventDefault();
-    var dados = $("#formLogin").serialize();
-    var acao = $("#formLogin").attr("action");
-    console.log(dados);
-    $.ajax({
-        url: "class/index.php?acao="+acao,
-        data: dados,
-        type: 'POST',
-        success: function (retornoPost) {
-            var retornoPost = JSON.parse(retornoPost);
-            if(!retornoPost.erro) {
-            } else {
-            }
-            //alert(retornoPost.msg);
-        },
-        async: false
-    });
-    $("#formLogin").trigger("reset");
-    $("#modalLogin").find("form").attr("action", "");
 });
 
 $.click(function(e) {
