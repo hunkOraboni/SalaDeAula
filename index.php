@@ -10,7 +10,6 @@
 
     class Aplicacao {
 	public static function run() {
-            $layout = new Template("view/layout.tpl");
             // Monta Conteúdo
             $conteudo = "";
             if(isset($_GET["acao"])) {
@@ -29,6 +28,7 @@
                 }
             } else {
                 // Pagina Inicial
+                $layout = new Template("view/layout.tpl");
                 $paginaInicial = new Template("view/PaginaInicial.tpl");
                 $formLogin = new Template("view/Usuario/FormLogin.tpl");
                 $layout->set("formLogin", $formLogin->saida());
