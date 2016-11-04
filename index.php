@@ -26,6 +26,8 @@
                     }
                     $conteudo = $retorno["msg"];
                 }
+            } else if(isset($_GET["paginaUsuario"])){
+                $layout = new Template("view/Telas/layoutInicial.tpl");
             } else {
                 // Pagina Inicial
                 $layout = new Template("view/layout.tpl");

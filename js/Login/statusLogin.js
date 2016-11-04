@@ -40,7 +40,9 @@ $("#formLogin").submit(function(e) {
         success: function (retornoPost) {
             var retornoPost = JSON.parse(retornoPost);
             if(!retornoPost.erro) {
-                jQuery("#status .modal-title").html("Sucesso");
+                setTimeout(function() {
+                    window.location.replace("saladeaula.dev/view/Telas/layout.tpl")
+                }, 2000);
             } else {
                 jQuery("#status .modal-title").html("Erro");
             }

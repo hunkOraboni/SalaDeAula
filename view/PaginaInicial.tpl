@@ -11,12 +11,12 @@
 
         <!-- css -->
         <link rel="stylesheet" href="../bootstrap-3.3.7/dist/css/bootstrap.min.css">
-        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="../view/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <link href="../css/nivo-lightbox.css" rel="stylesheet" />
         <link href="../css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
         <link href="../css/animations.css" rel="stylesheet" />
         <link href="../css/style.css" rel="stylesheet">
-        <link href="color/default.css" rel="stylesheet">
+        <link href="../view/color/default.css" rel="stylesheet">
 
     </head>
 
@@ -33,7 +33,7 @@
                     <div class="col-md-8 col-md-offset-2 text-center inner">
                         <div class="animatedParent">
                             <h1>Sala de Aula</h1>
-                            <p>Um site desenvolvido por estudantes, para estudantes</p>
+                            <h3>Um site desenvolvido por estudantes, para estudantes</h3>
                         </div>
                     </div>
                 </div>
@@ -190,7 +190,6 @@
                                         <p>
                                             O Sala de Aula com base nas quantidade de questões respondidas pelo estudante gera um ranking dos alunos que mais responderam corretamente questoes
                                         </p>
-                                        <a href="#" class="btn btn-skin">Learn more</a>
                                     </div>
                                 </div>
                             </div>
@@ -242,7 +241,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
                                         <div class="validation"></div>
                                     </div>
                                     <div class="form-group">
@@ -285,7 +284,6 @@
 
         <script src="../js/jsInicial/custom.js"></script>
         <script src="../js/jsInicial/css3-animate-it.js"></script>
-        <script src="contactform/contactform.js"></script>
 
     </body>
 
