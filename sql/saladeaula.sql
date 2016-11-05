@@ -26,20 +26,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `estudante`
 --
 
-CREATE TABLE `estudante` (
+CREATE TABLE IF NOT EXISTS `estudante` (
   `id` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `senha` varchar(255) NOT NULL,
   `idUsuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `estudante`
---
-
-INSERT INTO `estudante` (`id`, `nome`, `email`, `senha`, `idUsuario`) VALUES
-(1, 'vinicius', 'teste@teste', 'teste', 7);
 
 -- --------------------------------------------------------
 
@@ -47,11 +38,9 @@ INSERT INTO `estudante` (`id`, `nome`, `email`, `senha`, `idUsuario`) VALUES
 -- Table structure for table `professor`
 --
 
-CREATE TABLE `professor` (
+CREATE TABLE IF NOT EXISTS `professor` (
   `id` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `senha` varchar(255) NOT NULL,
   `titulacao` varchar(255) NOT NULL,
   `areaAtuacao` varchar(255) NOT NULL,
   `idUsuario` int(11) NOT NULL
@@ -63,19 +52,12 @@ CREATE TABLE `professor` (
 -- Table structure for table `usuario`
 --
 
-CREATE TABLE `usuario` (
+CREATE TABLE IF NOT EXISTS `usuario` (
   `id` int(11) NOT NULL,
   `usuario` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `usuario`
---
-
-INSERT INTO `usuario` (`id`, `usuario`, `email`, `senha`) VALUES
-(7, 'teste', 'teste@teste', 'teste');
 
 --
 -- Indexes for dumped tables
@@ -110,7 +92,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `estudante`
 --
 ALTER TABLE `estudante`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `professor`
 --
@@ -120,7 +102,7 @@ ALTER TABLE `professor`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --

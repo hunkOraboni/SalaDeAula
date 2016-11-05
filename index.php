@@ -1,29 +1,30 @@
 <?php
     function __autoload($classe) {
-	$pastas = array('model', 'controller');
-	foreach ($pastas as $pasta) {
+        $pastas = array('model', 'controller');
+        foreach ($pastas as $pasta) {
             if (file_exists("class/{$pasta}/{$classe}.class.php")) {
                 include_once "class/{$pasta}/{$classe}.class.php";
             }
-	}
+        }
+        require_once "database.php";
     }
-
+    
     class Aplicacao {
-	public static function run() {
+	    public static function run() {
             $layout = new Template("view/layout.tpl");
             // Monta Conteúdo
             $conteudo = "";
             if(isset($_GET["acao"])) {
                 $class = $_GET["acao"];
                 if(class_exists($class)) {
-                    Transacao::open();
+                    ORM::get_db()->beginTransaction();
                     $pagina = new $class;
                     $retorno = $pagina->controller();
                     if($retorno["erro"]) {
-                        Transacao::rollback();
+                        ORM::get_db()->rollBack();
                     }
                     else {
-                        Transacao::close();
+                        ORM::get_db()->commit();
                     }
                     $conteudo = $retorno["msg"];
                 }
@@ -38,7 +39,8 @@
 
             $layout->set("conteudo",$conteudo);
             echo $layout->saida();
-	}
+	    }
+
     }
     Aplicacao::run();
 ?>

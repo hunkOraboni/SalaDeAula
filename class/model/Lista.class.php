@@ -1,36 +1,47 @@
 <?php
     class Lista {
-	private $tabela;
-	public function __construct($tabela = NULL) {
-            if($tabela) {
-                    $this->tabela = $tabela;
-            }
-            else {
-                    echo "Faltando o nome da tabela!";
-            }
-	}
-	public function model() {
+        
+        public static function criarTabelaPessoa($tabela, $join, $colunas, $template) {
             try {
-                $conexao = Transacao::get();
-                $sql = "SELECT * FROM $this->tabela";
-                $resultado = $conexao->Query($sql);
-                if($resultado->rowCount()==0) {
+                $paginaLista = new Template("view/Usuario/Lista".$template.".tpl");
+
+                if(ORM::for_table($tabela)->count() == 0) {
                     $retorno["erro"] = true;
                     $retorno["msg"] = "Nenhum valor encontrado!";
                 }
                 else {
-                    while($dados = $resultado->fetchObject()) {
-                        $tabela[] = $dados;
+                    if($join) {
+                        $registros = ORM::for_table($tabela)
+                            ->select_many($colunas)
+                            ->join("usuario", array($tabela.".idUsuario", "=", "usuario.id"))
+                            ->find_many();
+                    } else {
+                        $registros = ORM::for_table($tabela)->find_many();
                     }
+                    
+                    foreach ($registros as $registro) {
+                        $linhaTabela = new Template("view/Usuario/ListaTabela".$template.".tpl");
+                        foreach ($colunas as $coluna) {
+                            // se a coluna tiver ".id" no nome, chame-a de "id"
+                            // previne colunas ambíguas
+                            if(strpos($coluna, ".id") !== false) {
+                                $coluna = "id";
+                            }
+                            $linhaTabela->set($coluna, $registro->get($coluna));
+                        }
+                        $linhas[] = $linhaTabela;
+                    }
+
+                    $paginaLista->set("tabela", Template::juntar($linhas));
                     $retorno["erro"] = false;
-                    $retorno["msg"] = $tabela;
+                    $retorno["msg"] = $paginaLista->saida();
                 }
-            }
-            catch(Exception $e) {
+            } catch(Exception $e) {
                 $retorno["erro"] = true;
-                $retorno["msg"] = "Ocorreu um erro entre em contato com o Administrador ".$e->getMessage();
+                $retorno["msg"] = "Ocorreu um erro entre em contato com o Administrador " . 
+                                    $e->getMessage();
             }
             return $retorno;
-	}
+        }
     }
 ?>

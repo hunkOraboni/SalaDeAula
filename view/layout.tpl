@@ -181,37 +181,63 @@
             </div>
         </div>
 
-        <!-- Formulário para edição de Estudante-->
-        <div class="modal fade" id="modalEditaEstudante" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <!-- Formulário para edição de Usuario-->
+        <div class="modal fade" id="modalEditaUsuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id=""></h4>
+                        <h4 class="modal-title" id="">Editar Usuário</h4>
                     </div>
-                    <form method="post" action="" id="formEditaEstudante">
+                    <form method="post" action="EditaUsuario" class="formEdita" id="formEditaUsuario">
                         <div class="modal-body">
                             <div class="form-group">
-                                <span class="form-group-addon">Nome</span>
-                                <input type="text" class="form-control" placeholder="Nome" name="nome">
+                                <span class="form-group-addon">Usuário</span>
+                                <input type="text" class="form-control obrigatorio" placeholder="Login" name="usuario">
                             </div>
                             <div class="form-group">
                                 <span class="form-group-addon">E-mail</span>
-                                <input type="email" class="form-control" placeholder="email@exemplo.com" name="email">
-                            </div>
-                            <div class="form-group">
-                                <span class="form-group-addon">Usuário</span>
-                                <input type="text" class="form-control" placeholder="Login" name="usuario">
-                            </div>
-                            <div class="form-group">
-                                <span class="form-group-addon">Senha</span>
-                                <input type="password" class="form-control" placeholder="Senha" name="senha">
+                                <input type="email" class="form-control obrigatorio" placeholder="email@exemplo.com" name="email">
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Atualizar</button>
                             </div>
                         </div>
                         <input type="hidden" name="id">
+                        <input type="hidden" name="idUsuario">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulário para edição de Estudante-->
+        <div class="modal fade" id="modalEditaEstudante" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="">Editar Estudante</h4>
+                    </div>
+                    <form method="post" action="EditaEstudante" class="formEdita" id="formEditaEstudante">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <span class="form-group-addon">Nome</span>
+                                <input type="text" class="form-control obrigatorio" placeholder="Nome" name="nome">
+                            </div>
+                            <div class="form-group">
+                                <span class="form-group-addon">E-mail</span>
+                                <input type="email" class="form-control obrigatorio" placeholder="email@exemplo.com" name="email">
+                            </div>
+                            <div class="form-group">
+                                <span class="form-group-addon">Usuário</span>
+                                <input type="text" class="form-control obrigatorio" placeholder="Login" name="usuario">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Atualizar</button>
+                            </div>
+                        </div>
+                        <input type="hidden" name="id">
+                        <input type="hidden" name="idUsuario">
                     </form>
                 </div>
             </div>
@@ -223,39 +249,36 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id=""></h4>
+                        <h4 class="modal-title" id="">Editar Professor</h4>
                     </div>
-                    <form method="post" action="" id="formEditaProfessor">
+                    <form method="post" action="EditaProfessor" class="formEdita" id="formEditaProfessor">
                         <div class="modal-body">
                             <div class="form-group">
                                 <span class="form-group-addon">Nome</span>
-                                <input type="text" class="form-control" placeholder="Nome" name="nome">
+                                <input type="text" class="form-control obrigatorio" placeholder="Nome" name="nome">
                             </div>
                             <div class="form-group">
                                 <span class="form-group-addon">E-mail</span>
-                                <input type="email" class="form-control" placeholder="email@exemplo.com" name="email">
+                                <input type="email" class="form-control obrigatorio" placeholder="email@exemplo.com" name="email">
                             </div>
                             <div class="form-group">
                                 <span class="form-group-addon">Usuário</span>
-                                <input type="text" class="form-control" placeholder="Login" name="usuario">
+                                <input type="text" class="form-control obrigatorio" placeholder="Login" name="usuario">
                             </div>
                             <div class="form-group">
                                 <span class="form-group-addon">Titulação</span>
-                                <input type="text" class="form-control" placeholder="Título" name="titulacao">
+                                <input type="text" class="form-control obrigatorio" placeholder="Título" name="titulacao">
                             </div>
                             <div class="form-group">
                                 <span class="form-group-addon">Área de Atuação</span>
-                                <input type="text" class="form-control" placeholder="Área de Atuação" name="areaAtuacao">
-                            </div>
-                            <div class="form-group">
-                                <span class="form-group-addon">Senha</span>
-                                <input type="password" class="form-control" placeholder="Senha" name="senha">
+                                <input type="text" class="form-control obrigatorio" placeholder="Área de Atuação" name="areaAtuacao">
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Atualizar</button>
                             </div>
                         </div>
                         <input type="hidden" name="id">
+                        <input type="hidden" name="idUsuario">
                     </form>
                 </div>
             </div>

@@ -3,51 +3,30 @@
 class InsereUsuario {
     public function controller() {
         try {
-            // nome email usuario senha classificacao id
-            $camposUsuario = array("usuario", "email", "senha");
-            $insereUsuario = new Insere("usuario", $camposUsuario);
-            $retornoUsuario = $insereUsuario->model();
-            if($retornoUsuario["erro"]) {
-                $retorno = $retornoUsuario;
-                return $retorno;
-            }
+            $usuario = ORM::for_table("usuario")->create();
+            $usuario->usuario = $_POST["usuario"];
+            $usuario->email = $_POST["email"];
+            $usuario->senha = $_POST["senha"];
+            $usuario->save();
 
             $opcao = $_POST["classificacao"];
             if($opcao == "1") {
-                // crud professor
-                
-                $camposProfessor = array("nome", "email", "senha", "titulacao", "areaAtuacao", "idUsuario");
-                $_POST["idUsuario"] = $retornoUsuario["id"];
-                $insereProfessor = new Insere("professor", $camposProfessor);
-                $retornoProfessor = $insereProfessor->model();
-                if($retornoProfessor["erro"]) {
-                    $retorno = $retornoProfessor;
-                    return $retorno;
-                }
-                //$retorno["idUsuario"] = $retornoUsuario["id"];
-                //$retorno["usuario"] = $_POST["usuario"];
-                //$retorno["idEstudante"] = $retornoEstudante["id"];
-                $retorno["erro"] = false;
-                $retorno["msg"] = "Usuário criado com sucesso!\n";
-                
-            
+                // CRUD Professor
+                $professor = ORM::for_table("professor")->create();
+                $professor->nome = $_POST["nome"];
+                $professor->titulacao = $_POST["titulacao"];
+                $professor->areaAtuacao = $_POST["areaAtuacao"];
+                $professor->idUsuario = $usuario->id();
+                $professor->save();
             } else if ($opcao == "2") {
-                // crud estudante
-                $camposEstudante = array("nome", "email", "senha", "idUsuario");
-                $_POST["idUsuario"] = $retornoUsuario["id"];
-                $insereEstudante = new Insere("estudante", $camposEstudante);
-                $retornoEstudante = $insereEstudante->model();
-                if($retornoEstudante["erro"]) {
-                    $retorno = $retornoEstudante;
-                    return $retorno;
-                }
-                //$retorno["idUsuario"] = $retornoUsuario["id"];
-                //$retorno["usuario"] = $_POST["usuario"];
-                //$retorno["idEstudante"] = $retornoEstudante["id"];
-                $retorno["erro"] = false;
-                $retorno["msg"] = "Usuário criado com sucesso!\n";
-                
+                // CRUD Estudante
+                $estudante = ORM::for_table("estudante")->create();
+                $estudante->nome = $_POST["nome"];
+                $estudante->idUsuario = $usuario->id();
+                $estudante->save();
             }
+            $retorno["erro"] = false;
+            $retorno["msg"] = "Usuário criado com sucesso!\n";
             
         } catch (Exception $ex) {
             $retorno["erro"] = true;

@@ -1,14 +1,26 @@
 <?php
 class EditaEstudante {
     public function controller() {
-        try {
-            $campos = array("nome", "email", "usuario", "senha");
-            $altera = new Altera("estudante", $campos);
-            $retorno = $altera->model();
-        } catch (Exception $ex) {
-            $retorno["erro"] = true;
-            $retorno["msg"] = "Erro de alteração\n".$ex->getMessage()."\n";
+        $tabela = "estudante";
+        $id = $_POST["id"];
+        $campos = array("nome");
+        $valores = array();
+        foreach($campos as $campo) {
+            $valores[$campo] = $_POST[$campo];
         }
+        $retorno = Altera::alterarRegistro($tabela, $id, $valores);
+
+        if(!$retorno["erro"]) {
+            $tabela = "usuario";
+            $id = $_POST["idUsuario"];
+            $campos = array("email", "usuario");
+            $valores = array();
+            foreach($campos as $campo) {
+                $valores[$campo] = $_POST[$campo];
+            }
+            $retorno = Altera::alterarRegistro($tabela, $id, $valores);
+        }
+
         return $retorno;
     }
 }
