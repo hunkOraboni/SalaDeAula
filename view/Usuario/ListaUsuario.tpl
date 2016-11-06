@@ -4,7 +4,6 @@
             <tr>
                 <th> Usuário </th>
                 <th> E-Mail </th>
-                <th> Editar </th>
                 <th> Remover </th>
             </tr>
         </thead>

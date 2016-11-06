@@ -7,6 +7,11 @@
                             Cursos
                         </h1>
                     </div>
+                    <ol class="breadcrumb">
+                        <li class="active">
+                            <a href="?acao=InsereCurso"><i class="fa fa-asterisk"></i> Adicionar Cursos </a>
+                        </li>
+                    </ol>
                 </div>
                 <div class="row">
                     [@tabelaCurso]

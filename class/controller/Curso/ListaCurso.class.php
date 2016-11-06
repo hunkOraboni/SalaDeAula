@@ -6,12 +6,22 @@ class ListaCurso {
         try {
             $curso = new Template("view/Telas/Curso.tpl");
             $listaCurso = new Template("view/Telas/ListaCurso.tpl");
-            $listaCurso->set("sigla", "CCO");
             $listaCurso->set("nome", "Ciências da Computação");
             $dadosCurso[] = $listaCurso;
             $listaCurso = new Template("view/Telas/ListaCurso.tpl");
-            $listaCurso->set("sigla", "SIN");
-            $listaCurso->set("nome", "Sistemas");
+            $listaCurso->set("nome", "Sistemas de Informação");
+            $dadosCurso[] = $listaCurso;
+            $listaCurso = new Template("view/Telas/ListaCurso.tpl");
+            $listaCurso->set("nome", "Sistemas de Informação");
+            $dadosCurso[] = $listaCurso;
+            $listaCurso = new Template("view/Telas/ListaCurso.tpl");
+            $listaCurso->set("nome", "Sistemas de Informação");
+            $dadosCurso[] = $listaCurso;
+            $listaCurso = new Template("view/Telas/ListaCurso.tpl");
+            $listaCurso->set("nome", "Sistemas de Informação");
+            $dadosCurso[] = $listaCurso;
+            $listaCurso = new Template("view/Telas/ListaCurso.tpl");
+            $listaCurso->set("nome", "Sistemas de Informação");
             $dadosCurso[] = $listaCurso;
             $curso->set("tabelaCurso", Template::juntar($dadosCurso));
             $retorno["erro"] = false;

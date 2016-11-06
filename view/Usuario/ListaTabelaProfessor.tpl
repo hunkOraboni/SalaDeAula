@@ -5,11 +5,6 @@
     <td name="areaAtuacao">[@areaAtuacao]</td>
     <td name="usuario">[@usuario]</td>
     <td>  
-        <button type="button" acao="EditaProfessor" class="btn btn-info editarPessoa" data-toggle="modal" data-target="" cod="[@cod]">  
-            <span class="glyphicon glyphicon-pencil"></span>
-        </button>
-    </td>
-    <td>  
         <button type="button" acao="RemoveProfessor" class="btn btn-danger removerPessoa" data-toggle="modal" data-target="#confirma" cod="[@cod]">
             <span class="glyphicon glyphicon-trash"></span>
         </button>

@@ -37,8 +37,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="../view/images/logo.png" alt="" width="40px" height="40px" />
-                <a class="navbar-brand" href="index.html">Sala de Aula</a>
+                <img class="navbar-brand navbar-left" src="../view/images/logo.png" width="52px" height="60px"/>
+                <a class="navbar-brand" href="?acao=ListaCurso">Sala de Aula</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -73,14 +73,14 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Nome do Usuario <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                            <a href="?acao=PerfilUsuario"><i class="fa fa-fw fa-user"></i> Perfil</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Excluir Conta</a>
+                            <a href="?acao=RemoverUsuario"><i class="fa fa-fw fa-gear"></i> Excluir Conta</a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="?acao=Logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -103,10 +103,10 @@
                         <a data-toggle="collapse" data-target="#materia"><i class="fa fa-fw fa-arrow-circle-right"></i> Matéria <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="materia" class="collapse">
                             <li>
-                                <a href="?insereCurso">Buscar Matérias</a>
+                                <a class="btnBuscaMat">Buscar Matérias</a>
                             </li>
                             <li>
-                                <a href="?visualizaCurso"> Adicionar Matéria</a>
+                                <a href="?acao=InsereMateria"> Adicionar Matéria</a>
                             </li>
                         </ul>
                     </li>
@@ -114,10 +114,10 @@
                         <a data-toggle="collapse" data-target="#topico"><i class="fa fa-fw fa-arrow-circle-right"></i> Tópico <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="topico" class="collapse">
                             <li>
-                                <a href="?insereCurso">Buscar Tópico</a>
+                                <a class="btnBuscaTop">Buscar Tópico</a>
                             </li>
                             <li>
-                                <a href="?visualizaCurso"> Adiciona Tópico</a>
+                                <a href="?acao=InsereTopico"> Adiciona Tópico</a>
                             </li>
                         </ul>
                     </li>
@@ -125,10 +125,10 @@
                         <a data-toggle="collapse" data-target="#questao"><i class="fa fa-fw fa-arrow-circle-right"></i> Questão <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="questao" class="collapse">
                             <li>
-                                <a href="?insereCurso">Buscar Questão</a>
+                                <a class="btnBuscaQuest">Buscar Questão</a>
                             </li>
                             <li>
-                                <a href="?visualizaCurso"> Adiciona Questão</a>
+                                <a href="?acao=InsereQuestao"> Adiciona Questão</a>
                             </li>
                         </ul>
                     </li>
@@ -136,10 +136,10 @@
                         <a data-toggle="collapse" data-target="#instituicao"><i class="fa fa-fw fa-arrow-circle-right"></i> Instituição de Ensino<i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="instituicao" class="collapse">
                             <li>
-                                <a href="?ranking">Buscar Instituição</a>
+                                <a class="btnBuscaInst">Buscar Instituição</a>
                             </li>
                             <li>
-                                <a href="?visualizaCurso">Adicionar Instituição</a>
+                                <a href="?acao=InsereIstituicao">Adicionar Instituição</a>
                             </li>
                         </ul>
                     </li>
@@ -161,10 +161,10 @@
                         <a href="index.html"><i class="fa fa-fw fa-envelope"></i> Gerar Testes</a>
                     </li>
                     <li>
-                        <a href="index.html"><i class="fa fa-fw fa-user"></i> Estudantes</a>
+                        <a href="?acao=ListaEstudante"><i class="fa fa-fw fa-user"></i> Estudantes</a>
                     </li>
                     <li>
-                        <a href="index.html"><i class="fa fa-fw fa-user"></i> Professor</a>
+                        <a href="?acao=ListaProfessor"><i class="fa fa-fw fa-user"></i> Professor</a>
                     </li>
                     <li>
                         <a href="index.html"><i class="fa fa-fw fa-envelope"></i> Relatório de Questões</a>

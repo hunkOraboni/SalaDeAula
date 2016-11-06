@@ -5,7 +5,6 @@
                 <th> Nome </th>
                 <th> E-Mail </th>
                 <th> Usuário </th>
-                <th> Editar </th>
                 <th> Remover </th>
             </tr>
         </thead>
