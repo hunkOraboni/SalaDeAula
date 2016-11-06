@@ -10,47 +10,9 @@
         <link rel="stylesheet" type="text/css" href="css/redimensiona.css" media="all">
         <script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
     </head>
-
-    <body>
-        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="?">Sala de Aula</a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="?acao=ListaEstudante">Mostra Estudantes</a></li>
-                        <li><a href="?acao=ListaProfessor">Mostra Professor</a></li>
-                    </ul>
-                    <div class="nav navbar-nav navbar-right">
-                        <ul class="nav navbar-nav">
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuário <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="btnLogin" href="?" data-toggle="" data-target="" >Login</a></li>
-                                    <li><a class="btnRegistrar" href="?">Registrar</a></li>
-                                    <li><a class="btnLogout" href="?">Logout</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="nav navbar-nav navbar-right">
-                        <ul class="nav navbar-nav">
-                            <li><a href="">[@status]</a></li>
-                        </ul>
-                    </div>
-                </div><!--/.nav-collapse -->
-            </div>
-        </div>
     
         
-        <div class="container">
+        <div>
             <div class="conteudo">
                 [@conteudo]
             </div>
@@ -135,7 +97,7 @@
                     <form method="post" action="" id="formInsere">
                         <div class="modal-body">
                             <div class="form-group">
-                                <span class="form-group-addon">Nome</span>
+                                <span class="form-group-addon">Nome Completo</span>
                                 <input type="text" class="form-control obrigatorio" placeholder="Nome" name="nome">
                             </div>
                             <div class="form-group">
@@ -286,5 +248,6 @@
 	     
         <script type="text/javascript" src="bootstrap-3.3.7/dist/js/bootstrap.min.js" ></script>
         <script type="text/javascript" src="js/controleClicks.js"></script>
+        <script type="text/javascript" src="js/Login/statusLogin.js"></script>
     </body>
 </html>
