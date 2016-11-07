@@ -9,7 +9,7 @@
                     </div>
                     <ol class="breadcrumb">
                         <li class="active">
-                            <a href="?acao=InsereCurso"><i class="fa fa-asterisk"></i> Adicionar Cursos </a>
+                            <a href="?acao=FormCurso"><i class="fa fa-plus-circle"></i> Adicionar Cursos </a>
                         </li>
                     </ol>
                 </div>

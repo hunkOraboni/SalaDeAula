@@ -92,10 +92,10 @@
                         <a data-toggle="collapse" data-target="#curso"><i class="fa fa-fw fa-arrow-circle-right"></i> Curso <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="curso" class="collapse">
                             <li>
-                                <a href="?insereCurso">Adicionar Cursos</a>
+                                <a href="?acao=FormCurso">Adicionar Cursos</a>
                             </li>
                             <li>
-                                <a href="?visualizaCurso">Ver Cursos</a>
+                                <a href="?acao=ListaCurso">Ver Cursos</a>
                             </li>
                         </ul>
                     </li>
@@ -144,7 +144,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a data-toggle="collapse" data-target="#curso"><i class="fa fa-fw fa-arrow-circle-right"></i> Ranking <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a data-toggle="collapse" data-target="#ranking"><i class="fa fa-fw fa-arrow-circle-right"></i> Ranking <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="ranking" class="collapse">
                             <li>
                                 <a href="?ranking">Ranking por Cursos</a>
@@ -175,12 +175,11 @@
         </nav>
 
         <div id="page-wrapper">
-            <div>
+            <div class="container-fluid"> <!-- /.container -->
                 <div class="conteudo">
                     [@conteudo]
                 </div>
-            </div><!-- /.container -->
-            
+            </div>
             <!-- /.container-fluid -->
 
         </div>
@@ -193,6 +192,7 @@
     <script src="../view/Telas/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
+    <script type="text/javascript" src="js/controleClicks.js"></script>
     <script src="../view/Telas/js/bootstrap.min.js"></script>
 </body>
 

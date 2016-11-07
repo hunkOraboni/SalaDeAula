@@ -27,6 +27,43 @@ $(".btnRegistrar").click(function(e) {
     });
 });
 
+$("#formAddCurso").submit(function(e) {
+    // Previne que o browser abra o link
+    e.preventDefault();
+    // Encontra a form no html
+    var $formInsere = $("#formAddCurso");
+
+    // Verifica se todos os campos necessários foram preenchidos
+    if(!validarCampos($formInsere)) {
+        alert("Campo obrigatório não preenchido");
+        return false;
+    }
+
+    // Monta o json com os dados da form
+    var dados = $formInsere.serialize();
+  
+    
+    // Define a ação do PHP
+    var acao = $formInsere.attr("action");
+    $("#status").modal("show");
+    $.ajax({
+        url: "class/index.php?acao="+acao,
+        data: dados,
+        type: 'POST',
+        success: function (retornoPost) {
+            // Recebe a resposta e mostra se ocorreu erro ou não
+            var retornoPost = JSON.parse(retornoPost);
+            $("#status .modal-title").html(retornoPost.erro ? "Erro":"Sucesso");
+            $("#status .modal-body").html(retornoPost.msg);
+            $("#status").modal("show");
+        },
+        async: false
+    });
+
+    return false;
+
+});
+
 $(".editarPessoa").click(function(e) {
     // Previne que o browser abra o link
     e.preventDefault();
