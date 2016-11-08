@@ -15,7 +15,7 @@
                 if(!$statusBD["erro"]) {
                     $retorno = $retornoStatus;
                     $retorno["usuario"] = $_SESSION["usuario"];
-                    //$retorno["nivel"] = $_SESSION["nivel"];
+                    $retorno["nivel"] = $_SESSION["nivel"];
                 } else {
                     $retorno = $statusBD;
                 }

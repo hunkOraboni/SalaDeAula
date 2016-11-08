@@ -8,7 +8,6 @@ class InsereUsuario {
             $usuario->email = $_POST["email"];
             $usuario->senha = $_POST["senha"];
             $usuario->save();
-
             $opcao = $_POST["classificacao"];
             if($opcao == "1") {
                 // CRUD Professor

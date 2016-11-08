@@ -1,6 +1,6 @@
 <?php
 
-class CriaCurso {
+class InsereCurso {
     public function controller() {
         try {
             $curso = ORM::for_table("curso")->create();

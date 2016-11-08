@@ -14,7 +14,7 @@
                     </ol>
                 </div>
                 <div class="row">
-                    [@tabelaCurso]
+                    [@tabela]
                 </div>
 
             </div>

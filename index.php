@@ -24,6 +24,8 @@
                         ORM::get_db()->rollBack();
                     }
                     else {
+                        ControlaSessao::iniciaSessao();
+                        $layout->set("nomeUsuario", $_SESSION["usuario"]);
                         ORM::get_db()->commit();
                     }
                     $conteudo = $retorno["msg"];
@@ -45,4 +47,3 @@
     }
     Aplicacao::run();
 ?>
-

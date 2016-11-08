@@ -1,6 +1,18 @@
 <?php
 class Lista {
     
+    public static function buscaPorId($id, $tabela){
+        $registro = ORM::for_table($tabela)->where("id", $id)->find_array();
+        if(!$registro) {
+            $retorno["erro"] = true;
+            $retorno["msg"] = "Nenhum valor encontrado!";
+            return $retorno;
+        }
+        $retorno["erro"] = false;
+        $retorno["msg"] = $registro[0];
+        return $retorno;
+    }
+
     public static function criarTabelaPessoa($tabela, $join, $colunas, $template) {
         try {
             $paginaLista = new Template("view/Usuario/Lista".$template.".tpl");

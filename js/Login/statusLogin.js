@@ -1,3 +1,14 @@
+// Nivel de acesso:
+/*
+ * Admin = 0
+ * Professor = 1
+ * Estudante = 2
+ * 
+ * Admin = Estudantes, Professor, Relatório de Questões
+ * Professor = Estudantes
+ * Estudante = Gerar Teste
+ */
+
 jQuery(".btnLogin").click(function(e) {
     // Previne que o browser abra o link
     e.preventDefault(); 
