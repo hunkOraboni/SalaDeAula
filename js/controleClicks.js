@@ -27,6 +27,34 @@ $(".btnRegistrar").click(function(e) {
     });
 });
 
+$("#formEditaPerfilUsuario").submit(function(e) {
+    e.preventDefault();
+    var $formEditaPerfilUsuario = $("#formEditaPerfilUsuario");
+    var valores = $formEditaPerfilUsuario.serializeArray();
+    var dados = $formEditaPerfilUsuario.serialize();
+    var acao = $formEditaPerfilUsuario.attr("action");
+    if(valores[2].value === "") {
+        $("#status .modal-title").html("Erro");
+        $("#status .modal-body").html("É necessário colocar a senha atual");
+        $("#status").modal("show");
+        return false;
+    }
+    $.ajax({
+        url: "class/index.php?acao="+acao,
+        data: dados,
+        type: 'POST',
+        success: function (retornoPost) {
+            // Recebe a resposta e mostra se ocorreu erro ou não
+            var retornoPost = JSON.parse(retornoPost);
+            $("#status .modal-title").html(retornoPost.erro ? "Erro":"Sucesso");
+            $("#status .modal-body").html(retornoPost.msg);
+            $("#status").modal("show");
+        },
+        async: false
+    });
+    setTimeout(function (){ window.location.replace("index.php?acao=ListaCurso")}, 2000);
+});
+
 $("#formAddCurso").submit(function(e) {
     // Previne que o browser abra o link
     e.preventDefault();
