@@ -1,33 +1,32 @@
 <?php
-    class Remove {
-	private $id;
-	private $tabela;
-	
-	public function __construct($tabela) {
-            $conexao = Transacao::get();
-            $this->id = $conexao->quote($_GET["id"]);
-            $this->tabela = $tabela;
-	}
-	
-	public function model() {
-            try {
-                $conexao = Transacao::get();
-                $sql = "DELETE FROM $this->tabela WHERE id=$this->id";
-                $resultado = $conexao->Query($sql);
-                if($resultado->rowCount()==0) {
-                    $retorno["erro"] = true;
-                    $retorno["msg"] = "Nenhum valor removido!";
-                }
-                else {
-                    $retorno["erro"] = false;
-                    $retorno["msg"] = "Removido com sucesso";
-                }
-            }
-            catch(Exception $e) {
+class Remove {
+    
+    
+    public static function removePorId($tabela, $id) {
+        try {
+            $registro = ORM::for_table($tabela)->find_one($id);
+            
+            if($registro) {
+                $registro->delete();
+                $retorno["erro"] = false;
+                $retorno["msg"] = "Removido com sucesso";
+            } else {
                 $retorno["erro"] = true;
-                $retorno["msg"] = "Ocorreu um erro entre em contato com o Administrador ".$e->getMessage();
+                $retorno["msg"] = "Nenhum valor removido!";
             }
-            return $retorno;
-	}
+        } catch (Exception $ex) {
+            $retorno["erro"] = true;
+            $retorno["msg"] = "Erro de remoção\n".$ex->getMessage()."\n";
+        }
+        return $retorno;
     }
+
+    public static function removePessoaPorId($tabela, $id, $idUsuario) {
+        $retorno = Remove::removePorId($tabela, $id);
+        if(!$retorno["erro"]) {
+            $retorno = Remove::removePorId("usuario", $idUsuario);
+        }
+        return $retorno;
+    }
+}
 ?>

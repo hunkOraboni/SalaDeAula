@@ -1,258 +1,355 @@
-jQuery(".btnLogin").click(function(e) {
-    e.preventDefault();
-    jQuery("#modalLogin").trigger("reset");
-    jQuery("#modalLogin").find("form").attr("action","LoginUsuario");
-    jQuery("#modalLogin").modal("show");
+$(".btnRegistrar").click(function(e) {
+    // Previne que o browser abra o link
+    e.preventDefault(); 
+
+    // Encontra os elementos do html
+    var $modalInsere = $("#modalInsere");
+    var $formInsere = $modalInsere.find("form");
+    var $radioEstudante = $formInsere.find("#radioEstudante");
+    var $radioProfessor = $formInsere.find("#radioProfessor");
+    var $dadosProfessor = $formInsere.find(".dados-professor");
+
+    // Define a ação do PHP
+    $formInsere.attr("action", "InsereUsuario");
+
+    // Limpa o formulário e mostra 
+    $formInsere.trigger("reset");
+    $dadosProfessor.hide();
+    $radioEstudante.prop("checked", true);
+    $modalInsere.modal("show");
+
+    // Ações para os Radio Buttons
+    $radioProfessor.click(function (e) {
+        $dadosProfessor.slideDown("fast");
+    });
+    $radioEstudante.click(function (e) {
+        $dadosProfessor.slideUp("fast");
+    });
 });
 
-jQuery(".btnRegistrar").click(function(e) {
+$("#formEditaPerfilUsuario").submit(function(e) {
     e.preventDefault();
-    jQuery("#modalInsere").find("form").attr("action","InsereUsuario");
-    
-    jQuery("#formInsere").trigger("reset");
-    jQuery("#modalInsere").modal("show");
-});
-
-jQuery(".btnRegistrarEstudante").click(function(e) {
-    e.preventDefault();
-    jQuery("#modalInsereEditaEstudante .modal-title").html("Registrar");
-    jQuery("#modalInsereEditaEstudante").find("button[type=submit]").html("Registrar");
-    jQuery("#modalInsereEditaEstudante").find("form").attr("action","InsereEstudante");
-    
-    jQuery("#modalInsereEditaEstudante").trigger("reset");
-    jQuery("#modalInsereEditaEstudante").modal("show");
-});
-
-jQuery(".editar").click(function(e) {
-    e.preventDefault();
-    var linha = jQuery(this).closest("tr");
-    
-    jQuery("#modalEdita").find("form").attr("action", "EditaUsuario");
-    
-    jQuery("#modalEdita").find("input[name=nome]").val(jQuery(linha).children("td:eq(0)").text());
-    jQuery("#modalEdita").find("input[name=email]").val(jQuery(linha).children("td:eq(1)").text());
-    jQuery("#modalEdita").find("input[name=usuario]").val(jQuery(linha).children("td:eq(2)").text());
-    jQuery("#modalEdita").find("input[name=id]").val(jQuery(linha).attr("cod"));
-    jQuery("#modalEdita").modal("show");
-});
-
-jQuery(".editarEstudante").click(function(e) {
-    e.preventDefault();
-    var linha = jQuery(this).closest("tr");
-    
-    jQuery("#modalInsereEditaEstudante .modal-title").html("Editar");
-    jQuery("#modalInsereEditaEstudante").find("button[type=submit]").html("Editar");
-    jQuery("#modalInsereEditaEstudante").find("form").attr("action", "EditaEstudante");
-    
-    jQuery("#modalInsereEditaEstudante").find("input[name=nome]").val(jQuery(linha).children("td:eq(0)").text());
-    jQuery("#modalInsereEditaEstudante").find("input[name=email]").val(jQuery(linha).children("td:eq(1)").text());
-    jQuery("#modalInsereEditaEstudante").find("input[name=usuario]").val(jQuery(linha).children("td:eq(2)").text());
-    jQuery("#modalInsereEditaEstudante").find("input[name=id]").val(jQuery(linha).attr("cod"));
-    jQuery("#modalInsereEditaEstudante").modal("show");
-});
-
-jQuery("#formInsere").submit(function(e) {
-    e.preventDefault();
-    if((jQuery("#formInsere").find("input[name=nome]").val() == "")
-            || (jQuery("#formInsere").find("input[name=email]").val() == "")
-            || (jQuery("#formInsere").find("input[name=usuario]").val() == "")
-            || (jQuery("#formInsere").find("input[name=senha]").val() == "")) {
-        alert("Campo obrigatório não preenchido");
+    var $formEditaPerfilUsuario = $("#formEditaPerfilUsuario");
+    var valores = $formEditaPerfilUsuario.serializeArray();
+    var dados = $formEditaPerfilUsuario.serialize();
+    var acao = $formEditaPerfilUsuario.attr("action");
+    if(valores[2].value === "") {
+        $("#status .modal-title").html("Erro");
+        $("#status .modal-body").html("É necessário colocar a senha atual");
+        $("#status").modal("show");
         return false;
     }
-    
-    var dados = jQuery("#formInsere").serialize();
-    var acao = jQuery("#formInsere").attr("action");
-    jQuery.ajax({
+    $.ajax({
         url: "class/index.php?acao="+acao,
         data: dados,
         type: 'POST',
         success: function (retornoPost) {
+            // Recebe a resposta e mostra se ocorreu erro ou não
             var retornoPost = JSON.parse(retornoPost);
-            if(!retornoPost.erro) {
-                jQuery("#status .modal-title").html("Sucesso");
-                var valores = jQuery("#formInsere").serializeArray();
-                jQuery("#modalInsere").modal("hide");
-                jQuery("#formInsere").trigger("reset");
-                
-                /*
-                if (acao == "InsereUsuario") {
-                    var linha = "<tr cod="+retornoPost.id+"><br>";
-                    jQuery.each(valores, function (indice, valor) {
-                        if((valor.name != "id") && (valor.name != "senha") && (valor.name != "nome")) {
-                            linha += "  <td>"+valor.value+"</td><br>";
-                        }
-                    });
-                    linha += 
-                            "   <td>  "+
-                                    "<button type='button' class='btn btn-info editar' data-toggle='modal' data-target='#' cod='"+retornoPost.id+"'>"+
-                                            "<span class='glyphicon glyphicon-pencil'></span>"+
-                                    "</button><br>"+
-                            "   </td><br>"+
-                            "<td>"+
-                                    "<button type='button' class='btn btn-danger remover' data-toggle='modal' data-target='#confirma' cod='"+retornoPost.id+"'>"+
-                                            "<span class='glyphicon glyphicon-trash remover'></span>"+
-                                    "</button><br>"+
-                            "</td><br>";
-                    var tabela = jQuery(".table tbody");
-                    tabela.append(linha);
-                }
-                */
-            } else {
-                jQuery("#status .modal-title").html("Erro");
-            }
-            jQuery("#status .modal-body").html(retornoPost.msg);
-            jQuery("#status").modal("show");
-            //alert(retornoPost.msg);
+            $("#status .modal-title").html(retornoPost.erro ? "Erro":"Sucesso");
+            $("#status .modal-body").html(retornoPost.msg);
+            $("#status").modal("show");
         },
         async: false
     });
-    if((location.search == "?acao=ListaUsuario") || (location.search == "?acao=ListaEstudante")) {
-        setTimeout(location.reload(), 2000);
-    }
-    return false;
+    setTimeout(function (){ window.location.replace("index.php?acao=ListaCurso")}, 2000);
 });
 
-jQuery("#formEdita").submit(function(e) {
+$("#formAddCurso").submit(function(e) {
+    // Previne que o browser abra o link
     e.preventDefault();
-    if((jQuery("#formEdita").find("input[name=nome]").val() == "")
-            || (jQuery("#formEdita").find("input[name=email]").val() == "")
-            || (jQuery("#formEdita").find("input[name=usuario]").val() == "")) {
+    // Encontra a form no html
+    var $formInsere = $("#formAddCurso");
+
+    // Verifica se todos os campos necessários foram preenchidos
+    if(!validarCampos($formInsere)) {
         alert("Campo obrigatório não preenchido");
         return false;
     }
+
+    // Monta o json com os dados da form
+    var dados = $formInsere.serialize();
+  
     
-    var dados = jQuery("#formEdita").serialize();
-    var acao = jQuery("#formEdita").attr("action");
-    jQuery.ajax({
+    // Define a ação do PHP
+    var acao = $formInsere.attr("action");
+    $.ajax({
         url: "class/index.php?acao="+acao,
         data: dados,
         type: 'POST',
         success: function (retornoPost) {
+            // Recebe a resposta e mostra se ocorreu erro ou não
             var retornoPost = JSON.parse(retornoPost);
-            if(!retornoPost.erro) {
-                jQuery("#status .modal-title").html("Sucesso");
-                var valores = jQuery("#formEdita").serializeArray();
-                jQuery("#modalEdita").modal("hide");
-                jQuery("#formEdita").trigger("reset");
-                /*
-                if (acao == "EditaUsuario") {
-                    var linha = ".table tbody tr[cod="+valores[3].value+"] "; 
-                    jQuery(linha+"td:eq(0))").text(valores[0].value);
-                    jQuery(linha+"td:eq(1)").text(valores[1].value);
-                }
-                */
-            } else {
-                jQuery("#status .modal-title").html("Erro");
-            }
-            jQuery("#status .modal-body").html(retornoPost.msg);
-            jQuery("#status").modal("show");
-            //alert(retornoPost.msg);
+            $("#status .modal-title").html(retornoPost.erro ? "Erro":"Sucesso");
+            $("#status .modal-body").html(retornoPost.msg);
+            $("#status").modal("show");
         },
         async: false
     });
-    if((location.search == "?acao=ListaUsuario") || (location.search == "?acao=ListaEstudante")) {
-        setTimeout(location.reload(), 2000);
-    }
+    setTimeout(function (){ window.location.replace("index.php?acao=ListaCurso")}, 2000);
     return false;
+
 });
 
-jQuery("#formInsereEditaEstudante").submit(function(e) {
+$(".editarPessoa").click(function(e) {
+    // Previne que o browser abra o link
     e.preventDefault();
-    /*if((jQuery("#formInsereEdita").find("input[name=nome]").val() == "")
-            || (jQuery("#formInsereEdita").find("input[name=email]").val() == "")
-            || (jQuery("#formInsereEdita").find("input[name=usuario]").val() == "")
-            || (jQuery("#formInsereEdita").find("input[name=senha]").val() == "")) {
-        alert("Campo obrigatório não preenchido");
-        return false;
-    }*/
-    if((jQuery("#formInsereEditaEstudante").find("input[name=nome]").val() == "")
-            || (jQuery("#formInsereEditaEstudante").find("input[name=email]").val() == "")
-            || (jQuery("#formInsereEditaEstudante").find("input[name=usuario]").val() == "")) {
-        alert("Campo obrigatório não preenchido");
-        return false;
+
+    // Encontra os elementos html e busca a tabela por php
+    var acao = $(this).attr("acao");
+    var $linha = $(this).closest("tr");
+
+    var $modal;
+    if(acao == "EditaUsuario") {
+        $modal = $("#modalEditaUsuario");
+    } else if (acao == "EditaEstudante") {
+        $modal = $("#modalEditaEstudante");
+    } else {
+        $modal = $("#modalEditaProfessor");
     }
+
+    $modal.find("input").each(function() {
+        // Descobre o nome do input
+        var name = $(this).attr("name");
+        if(name != "id" && name != "idUsuario") {
+            // Preenche o input com a célula que tem o mesmo nome do input
+            $(this).val($linha.children("td[name="+ name +"]").text());
+        } else {
+            // Se for um id, preenche o input com os dados escondidos da linha
+            if(name == "id") {
+                $(this).val($linha.attr("cod"));
+            } else {
+                $(this).val($linha.attr("codUsuario"));
+            }
+        }
+    });
+
+    // Mostra o modal
+    $modal.modal("show");
+});
+
+$(".editarCurso").click(function(e) {
+    // Previne que o browser abra o link
+    e.preventDefault();
+    jQuery(".editarCamposCurso").prop("disabled", false);
+    jQuery(".salvarCamposCurso").prop("disabled", true);
+    jQuery("input[name=nome]").prop("disabled", true);
+    jQuery("textarea[name=descricao]").prop("disabled", true);
     
+    var id = $(this).closest("a").attr("cod");
+    // Encontra os elementos html e busca a tabela por php
+    var $modalEditaCurso = $("#modalEditaCurso");
+    $modalEditaCurso.find("#formEditaCurso").trigger("reset");
+    $.ajax({
+        url: "class/index.php?acao=BuscaCurso",
+        data: {"id": id},
+        type: 'POST',
+        success: function (retornoPost) {
+            // Recebe a resposta e mostra se ocorreu erro ou não
+            var retornoPost = JSON.parse(retornoPost);
+            $modalEditaCurso.find("input[name=id]").attr("value", id);
+            $modalEditaCurso.find("input[name=nome]").attr("value", retornoPost.msg.nome);
+            $modalEditaCurso.find("textarea[name=descricao]").val(retornoPost.msg.descricao);
+        },
+        async: false
+    });
+    $modalEditaCurso.modal("show");
+});
+
+$(".editarCamposCurso").click(function (e){
+    e.preventDefault();
+    //jQuery(".salvarCamposCurso").attr("disabled", "");
+    jQuery(".editarCamposCurso").prop("disabled", true);
+    jQuery(".salvarCamposCurso").prop("disabled", false);
+    jQuery("input[name=nome]").prop("disabled", false);
+    jQuery("textarea[name=descricao]").prop("disabled", false);
     
-    var dados = jQuery("#formInsereEditaEstudante").serialize();
-    var acao = jQuery("#formInsereEditaEstudante").attr("action");
-    jQuery.ajax({
-        url: "class/index.php?acao="+acao,
+});
+
+$(".salvarCamposCurso").click(function (e){
+   e.preventDefault();
+   var dados = $("#formEditaCurso").serialize();
+   $.ajax({
+        url: "class/index.php?acao=EditaCurso",
         data: dados,
         type: 'POST',
         success: function (retornoPost) {
             var retornoPost = JSON.parse(retornoPost);
-            if(!retornoPost.erro) {
-                jQuery("#status .modal-title").html("Sucesso");
-                var valores = jQuery("#formInsereEditaEstudante").serializeArray();
-                jQuery("#modalInsereEditaEstudante").modal("hide");
-                jQuery("#formInsereEditaEstudante").trigger("reset");
-                
-                /*
-                if (acao == "InsereEstudante") {
-                    var linha = "<tr cod="+retornoPost.id+"><br>";
-                    jQuery.each(valores, function (indice, valor) {
-                        if((valor.name != "id") && (valor.name != "senha")) {
-                            linha += "  <td>"+valor.value+"</td><br>";
-                        }
-                    });
-                    linha += 
-                            "   <td>  "+
-                                    "<button type='button' class='btn btn-info editar' data-toggle='modal' data-target='#' cod='"+retornoPost.id+"'>"+
-                                            "<span class='glyphicon glyphicon-pencil'></span>"+
-                                    "</button><br>"+
-                            "   </td><br>"+
-                            "<td>"+
-                                    "<button type='button' class='btn btn-danger remover' data-toggle='modal' data-target='#confirma' cod='"+retornoPost.id+"'>"+
-                                            "<span class='glyphicon glyphicon-trash remover'></span>"+
-                                    "</button><br>"+
-                            "</td><br>";
-                    var tabela = jQuery(".table tbody");
-                    tabela.append(linha);
-                }
-                if (acao == "EditaEstudante") {
-                    var linha = ".table tbody tr[cod="+valores[4].value+"] "; 
-                    jQuery(linha+"td:eq(0)").text(valores[0].value);
-                    jQuery(linha+"td:eq(1)").text(valores[1].value);
-                    jQuery(linha+"td:eq(2)").text(valores[2].value);
-                }
-                */
-            } else {
-                jQuery("#status .modal-title").html("Erro");
-            }
-            jQuery("#status .modal-body").html(retornoPost.msg);
-            jQuery("#status").modal("show");
-            //alert(retornoPost.msg);
+            $("#status .modal-title").html(retornoPost.erro ? "Erro" : "Sucesso");
+            $("#status .modal-body").html(retornoPost.msg);
+            $("#status").modal("show");
         },
         async: false
     });
-    if((location.search == "?acao=ListaUsuario") || (location.search == "?acao=ListaEstudante")) {
-        setTimeout(location.reload(), 2000);
-    }
-    return false;
+    var $modalEditaCurso = $("#modalEditaCurso");
+    $modalEditaCurso.modal("hide");
+});
+
+$(".removerCamposCurso").click(function (e){
+   e.preventDefault();
+   var dados = $("#formEditaCurso").serialize();
+   $.ajax({
+        url: "class/index.php?acao=RemoveCurso",
+        data: dados,
+        type: 'GET',
+        success: function (retornoGet) {
+            var retornoGet = JSON.parse(retornoGet);
+            $("#status .modal-title").html(retornoGet.erro ? "Erro" : "Sucesso");
+            $("#status .modal-body").html(retornoGet.msg);
+            $("#status").modal("show");
+        },
+        async: false
+    });
+    var $modalEditaCurso = $("#modalEditaCurso");
+    $modalEditaCurso.modal("hide");
 });
 
 
-jQuery(".remover").click(function(e) {
-    var linha = jQuery(this).closest("tr");
-    var cod = jQuery(linha).attr("cod");
-    jQuery("#confirma").modal("show");
-    jQuery("#sim").click(function(e) {
+function recarregarLista() {
+    if(location.search.includes("acao=Lista")) {
+        setTimeout(location.reload(), 2000);
+    }
+}
+
+function validarCampos($form) {
+    var camposPreenchidos = true;
+
+    // Verificar campos obrigatorios da form
+    $form.find("input.obrigatorio").each(function() {
+        if(!$(this).val()) {
+            return camposPreenchidos = false;
+        }
+    });
+
+    if($form.attr("id") == "formInsere") {
+        // Verificar campos específicos do professor
+        var isProfessor = $form.find("#radioProfessor").is(":checked");
+        if(isProfessor) {
+            $form.find("input.obrigatorio-prof").each(function() {
+                if(!$(this).val()) {
+                    return camposPreenchidos = false;
+                }
+            });
+        }
+    }
+
+    return camposPreenchidos; 
+}
+
+$("#formInsere").submit(function(e) {
+    // Previne que o browser abra o link
+    e.preventDefault();
+
+    // Encontra a form no html
+    var $formInsere = $("#formInsere");
+
+    // Verifica se todos os campos necessários foram preenchidos
+    if(!validarCampos($formInsere)) {
+        alert("Campo obrigatório não preenchido");
+        return false;
+    }
+
+    // Monta o json com os dados da form
+    var dados = $formInsere.serialize();
+  
+
+    // Define a ação do PHP
+    var acao = $formInsere.attr("action");
+
+    $.ajax({
+        url: "class/index.php?acao="+acao,
+        data: dados,
+        type: 'POST',
+        success: function (retornoPost) {
+            // Recebe a resposta e mostra se ocorreu erro ou não
+            var retornoPost = JSON.parse(retornoPost);
+            $("#modalInsere").modal("hide");
+            $("#status .modal-title").html(retornoPost.erro ? "Erro":"Sucesso");
+            $("#status .modal-body").html(retornoPost.msg);
+            $("#status").modal("show");
+        },
+        async: false
+    });
+
+    // se a operação foi feita numa página de listagem, atualiza a página
+    recarregarLista();
+
+    return false;
+});
+
+$(".formEdita").submit(function(e) {
+    // Previne que o browser abra o link
+    e.preventDefault();
+
+    // Verifica se todos os campos necessários foram preenchidos
+    if(!validarCampos($(this))) {
+        alert("Campo obrigatório não preenchido");
+        return false;
+    }
+    
+    var dados = $(this).serialize();
+    var acao = $(this).attr("action");
+    var $modal = $(this).parents(".modal");
+
+    $.ajax({
+        url: "class/index.php?acao=" + acao,
+        data: dados,
+        type: 'POST',
+        success: function (retornoPost) {
+            console.log(dados);
+            var retornoPost = JSON.parse(retornoPost);
+            console.log(retornoPost);
+            if(!retornoPost.erro) {
+                $("#status .modal-title").html("Sucesso");
+                var valores = $(this).serializeArray();
+                $modal.modal("hide");
+                $(this).trigger("reset");
+            } else {
+                $("#status .modal-title").html("Erro");
+            }
+            $("#status .modal-body").html(retornoPost.msg);
+            $("#status").modal("show");
+        },
+        async: false
+    });
+
+    // se a operação foi feita numa página de listagem, atualiza a página
+    recarregarLista();
+
+    return false;
+});
+
+$(".removerPessoa").click(function(e) {
+    // Encontra a linha e o modal de confirmação
+    var acao = $(this).attr("acao");
+    var $linha = $(this).closest("tr");
+    var $modalRemocao = $("#confirmaRemocao");
+    
+    // Descobre a id da pessoa a ser removida
+    var cod = $linha.attr("cod");
+    var codUsuario = -1;
+    if(acao != "RemoveUsuario") {
+        codUsuario = $linha.attr("codUsuario");
+    }
+    console.log(acao);
+    $modalRemocao.modal("show");
+    $("#sim").click(function(e) {
         e.preventDefault();
-        jQuery("#confirma").modal("hide");
-        jQuery.ajax({
+        $modalRemocao.modal("hide");
+        $.ajax({
             type: 'GET',
-            url: "class/index.php?acao=RemoveUsuario&id="+cod,
+            url: "class/index.php?acao=" + acao + "&id=" + cod + "&idUsuario=" + codUsuario,
             success: function (retornoRemove) {
+                console.log(retornoRemove);
                 var retornoRemove = JSON.parse(retornoRemove);
                 if(!retornoRemove.erro) {
-                    jQuery("#status .modal-title").html("Sucesso");
-                    linha.remove();
+                    $("#status .modal-title").html("Sucesso");
+                    $linha.remove();
                 } else {
-                    jQuery("#status .modal-title").html("Erro");
+                    $("#status .modal-title").html("Erro");
                 }
-                jQuery("#status .modal-body").html(retornoRemove.msg);
-                jQuery("#status").modal("show");
+                $("#status .modal-body").html(retornoRemove.msg);
+                $("#status").modal("show");
             },
             async: false
         });
@@ -260,55 +357,3 @@ jQuery(".remover").click(function(e) {
     return false;
 });
 
-jQuery(".removerEstudante").click(function(e) {
-    var linha = jQuery(this).closest("tr");
-    var cod = jQuery(linha).attr("cod");
-    jQuery("#confirma").modal("show");
-    jQuery("#sim").click(function(e) {
-        e.preventDefault();
-        jQuery("#confirma").modal("hide");
-        jQuery.ajax({
-            type: 'GET',
-            url: "class/index.php?acao=RemoveEstudante&id="+cod,
-            success: function (retornoRemove) {
-                var retornoRemove = JSON.parse(retornoRemove);
-                if(!retornoRemove.erro) {
-                    jQuery("#status .modal-title").html("Sucesso");
-                    linha.remove();
-                } else {
-                    jQuery("#status .modal-title").html("Erro");
-                }
-                jQuery("#status .modal-body").html(retornoRemove.msg);
-                jQuery("#status").modal("show");
-            },
-            async: false
-        });
-    });
-    return false;
-});
-
-jQuery("#formLogin").submit(function(e) {
-    e.preventDefault();
-    var dados = jQuery("#formLogin").serialize();
-    var acao = jQuery("#formLogin").attr("action");
-    console.log(dados);
-    jQuery.ajax({
-        url: "class/index.php?acao="+acao,
-        data: dados,
-        type: 'POST',
-        success: function (retornoPost) {
-            var retornoPost = JSON.parse(retornoPost);
-            if(!retornoPost.erro) {
-            } else {
-            }
-            //alert(retornoPost.msg);
-        },
-        async: false
-    });
-    jQuery("#formLogin").trigger("reset");
-    jQuery("#modalLogin").find("form").attr("action", "");
-});
-
-jQuery().click(function(e) {
-    e.preventDefault();
-});

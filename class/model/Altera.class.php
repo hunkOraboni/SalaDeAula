@@ -1,43 +1,17 @@
 <?php
-    class Altera {
-	private $id;
-	private $tabela;
-	private $valores;
-	
-	public function __construct($tabela,$campos) {
-            $conexao = Transacao::get();
-            $this->id = $conexao->quote($_POST["id"]);
-            $this->tabela = $tabela;
-            $valor = array();
-            foreach($campos as $campo) {
-                if($campo == "dataUltProg") {
-                    $data = split("[/-]", $_POST[$campo]);
-                    $dado = $conexao->quote($data[2].$data[1].$data[0]);
-                } else {
-                    $dado = $conexao->quote($_POST[$campo]);
-                }
-                $valor[] = "$campo = $dado";
-            }
-            $this->valores = implode(", ", $valor);
-	}
-	
-	public function model() {
-            try {
-                $conexao = Transacao::get();
-                $sql = "UPDATE $this->tabela SET $this->valores WHERE id=$this->id";
-                $resultado = $conexao->Query($sql);
-                if($resultado->rowCount()==0) {
-                    $retorno["erro"] = true;
-                    $retorno["msg"] = "Nenhum valor alterado!";
-                } else {
-                    $retorno["erro"] = false;
-                    $retorno["msg"] = "Alterado com sucesso";
-                }
-            } catch(Exception $e) {
-                $retorno["erro"] = true;
-                $retorno["msg"] = "Ocorreu um erro entre em contato com o Administrador ".$e->getMessage();
-            }
-            return $retorno;
-	}
+class Altera {
+    public static function alterarRegistro($tabela, $id, $valores) {
+        try {
+            $registro = ORM::for_table($tabela)->find_one($id);
+            $registro->set($valores);
+            $registro->save();
+            $retorno["erro"] = false;
+            $retorno["msg"] = "Alteração realizada com sucesso!";
+        } catch (Exception $ex) {
+            $retorno["erro"] = true;
+            $retorno["msg"] = "Erro de alteração\n".$ex->getMessage()."\n";
+        }
+        return $retorno;
     }
+}
 ?>

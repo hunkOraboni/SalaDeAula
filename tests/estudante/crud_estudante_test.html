@@ -4,131 +4,96 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://saladeaula.dev/" />
-<title>RegistroEditarVisualizarRemover</title>
+<title>crud_estudante_test</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">RegistroEditarVisualizarRemover</td></tr>
+<tr><td rowspan="1" colspan="3">crud_estudante_test</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>http://saladeaula.dev</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=Usuário</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=Registrar Estudante</td>
+	<td>link=Registro</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>css=#formInsereEditaEstudante &gt; div.modal-body &gt; div.input-group &gt; input[name=&quot;nome&quot;]</td>
-	<td>Renam</td>
+	<td>name=nome</td>
+	<td>Teste</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>css=#formInsereEditaEstudante &gt; div.modal-body &gt; div.input-group &gt; input[name=&quot;email&quot;]</td>
-	<td>renam.aono@mail.com</td>
+	<td>css=div.modal-body &gt; div.form-group &gt; input[name=&quot;email&quot;]</td>
+	<td>teste@teste</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>css=#formInsereEditaEstudante &gt; div.modal-body &gt; div.input-group &gt; input[name=&quot;usuario&quot;]</td>
-	<td>renam.aono</td>
+	<td>name=usuario</td>
+	<td>teste</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>css=#formInsereEditaEstudante &gt; div.modal-body &gt; div.input-group &gt; input[name=&quot;senha&quot;]</td>
-	<td>123456</td>
+	<td>css=div.modal-body &gt; div.form-group &gt; input[name=&quot;senha&quot;]</td>
+	<td>teste</td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>css=#formInsereEditaEstudante &gt; div.modal-footer &gt; button.btn.btn-primary</td>
+	<td>css=div.modal-body &gt; div.modal-footer &gt; button.btn.btn-primary</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>css=button.btn.btn-default</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Mostra Estudantes</td>
+	<td>xpath=(//button[@type='button'])[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>xpath=(//button[@type='button'])[4]</td>
+	<td>link=Login</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>css=#formInsereEditaEstudante &gt; div.modal-body &gt; div.input-group &gt; input[name=&quot;nome&quot;]</td>
-	<td>Renam Aono</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=#formInsereEditaEstudante &gt; div.modal-footer &gt; button.btn.btn-primary</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=button.btn.btn-default</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>xpath=(//button[@type='button'])[4]</td>
-	<td></td>
+	<td>id=inputUsuario</td>
+	<td>teste</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>css=#formInsereEditaEstudante &gt; div.modal-body &gt; div.input-group &gt; input[name=&quot;email&quot;]</td>
-	<td>renam.aono@example.com</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>css=#formInsereEditaEstudante &gt; div.modal-body &gt; div.input-group &gt; input[name=&quot;usuario&quot;]</td>
-	<td>renam.aono123</td>
+	<td>id=inputSenha</td>
+	<td>teste</td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>css=#formInsereEditaEstudante &gt; div.modal-footer &gt; button.btn.btn-primary</td>
+	<td>xpath=(//button[@type='submit'])[2]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>css=button.btn.btn-default</td>
+	<td>link=Registro</td>
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>xpath=(//button[@type='button'])[5]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>id=sim</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=button.btn.btn-default</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
+	<td>waitForElementPresent</td>
 	<td>link=Sala de Aula</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Mostra Estudantes</td>
+	<td>link=Estudantes</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Professor</td>
 	<td></td>
 </tr>
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,48 +10,9 @@
         <link rel="stylesheet" type="text/css" href="css/redimensiona.css" media="all">
         <script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
     </head>
-    <body>
-        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="?">Sala de Aula</a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="?acao=ListaUsuario">Mostra Usuários</a></li>
-                        <li><a href="?acao=ListaEstudante">Mostra Estudantes</a></li>
-                    </ul>
-                    <div class="nav navbar-nav navbar-right">
-                        <ul class="nav navbar-nav">
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuário <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="btnLogin" href="?" data-toggle="" data-target="" >Login</a></li>
-                                    <li><a class="btnRegistrar" href="?">Registrar</a></li>
-                                    <li><a class="btnRegistrarEstudante" href="?">Registrar Estudante</a></li>
-                                    <!--<li><a class="btnAlteraSenha" href="?">Alterar Senha</a></li>-->
-                                    <li><a class="btnLogout" href="?">Logout</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="nav navbar-nav navbar-right">
-                        <ul class="nav navbar-nav">
-                            <li><a href="">[@status]</a></li>
-                        </ul>
-                    </div>
-                </div><!--/.nav-collapse -->
-            </div>
-        </div>
     
         
-        <div class="container">
+        <div>
             <div class="conteudo">
                 [@conteudo]
             </div>
@@ -60,22 +22,22 @@
         <div class="modal fade" id="status">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header text-center">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                             <h4 class="modal-title">Modal title</h4>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body text-center">
                         <p>One fine body&hellip;</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-lg btn-primary btn-block" data-dismiss="modal">Fechar</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 		
         <!-- Formulário para Confirmação -->
-        <div class="modal fade" id="confirma">
+        <div class="modal fade" id="confirmaRemocao">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -94,12 +56,15 @@
         </div><!-- /.modal -->
         
         <!-- Formulário para Login -->
-        <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade container" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="">Login</h4>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Fechar</span>
+                        </button>
+                        <h4 class="modal-title">Login</h4>
                     </div>
                     <div class="modal-body">
                         <form class="form-signin" method="post" action="" id="formLogin">
@@ -108,8 +73,8 @@
                                 <input type="usuario" id="inputUsuario" class="form-control" placeholder="Login" name="login">
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword" class="sr-only">Password</label>
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="senha">
+                                <label for="inputSenha" class="sr-only">Senha</label>
+                                <input type="password" id="inputSenha" class="form-control" placeholder="Senha" name="senha">
                             </div>
                             <button type="submit" class="btn btn-lg btn-primary btn-block btnFormLogin">Entrar</button>
                         </form>
@@ -119,30 +84,33 @@
         </div>
         
         <!-- Formulário para Registro -->
-        <div class="modal fade" id="modalInsere" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade container" id="modalInsere" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id=""></h4>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Fechar</span>
+                        </button>
+                        <h4 class="modal-title">Registrar</h4>
                     </div>
                     <form method="post" action="" id="formInsere">
                         <div class="modal-body">
                             <div class="form-group">
-                                <span class="form-group-addon">Nome</span>
-                                <input type="text" class="form-control" placeholder="Nome" name="nome">
+                                <span class="form-group-addon">Nome Completo</span>
+                                <input type="text" class="form-control obrigatorio" placeholder="Nome" name="nome">
                             </div>
                             <div class="form-group">
                                 <span class="form-group-addon">E-mail</span>
-                                <input type="email" class="form-control" placeholder="email@exemplo.com" name="email">
+                                <input type="email" class="form-control obrigatorio" placeholder="email@exemplo.com" name="email">
                             </div>
                             <div class="form-group">
                                 <span class="form-group-addon">Usuário</span>
-                                <input type="text" class="form-control" placeholder="Login" name="usuario">
+                                <input type="text" class="form-control obrigatorio" placeholder="Login" name="usuario">
                             </div>
                             <div class="form-group">
                                 <span class="form-group-addon">Senha</span>
-                                <input type="password" class="form-control" placeholder="Senha" name="senha">
+                                <input type="password" class="form-control obrigatorio" placeholder="Senha" name="senha">
                             </div>
                             <div class="form-group">
                                 <span class="form-group-addon">Classificação</span>
@@ -157,6 +125,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group dados-professor" id="titulacao">
+                                <span class="form-group-addon" title="textoTitulacao">Titulacao</span>
+                                <input type="text" class="form-control obrigatorio-prof" placeholder="Titulacao" name="titulacao">
+                            </div>
+                            <div class="form-group dados-professor" id="areaAtuacao">
+                                <span class="form-group-addon" title="textoAtuacao">Área de Atuação</span>
+                                <input type="text" class="form-control obrigatorio-prof" placeholder="Área de Atuação" name="areaAtuacao">
+                            </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Registrar</button>
                             </div>
@@ -166,31 +142,30 @@
                 </div>
             </div>
         </div>
-
-        <!-- Formulário para Atualização de Campos -->
-        <div class="modal fade" id="modalEdita" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        
+        <!-- Formulario para Criacao de Curso -->
+        <div class="modal fade container" id="modalInsereCurso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id=""></h4>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Fechar</span>
+                        </button>
+                        <h4 class="modal-title">Adicionar Curso </h4>
                     </div>
-                    <form method="post" action="" id="formEdita">
+                    <form method="post" action="" id="formInsereCurso">
                         <div class="modal-body">
                             <div class="form-group">
-                                <span class="form-group-addon">Usuário</span>
-                                <input type="text" class="form-control" placeholder="Login" name="usuario">
+                                <span class="form-group-addon">Nome do Curso</span>
+                                <input type="text" class="form-control obrigatorio" placeholder="Nome" name="nome">
                             </div>
                             <div class="form-group">
-                                <span class="form-group-addon">E-mail</span>
-                                <input type="email" class="form-control" placeholder="email@exemplo.com" name="email">
-                            </div>
-                            <div class="form-group">
-                                <span class="form-group-addon">Senha</span>
-                                <input type="password" class="form-control" placeholder="Senha" name="senha">
+                                <span class="form-group-addon">Insira uma descricao do Curso</span>
+                                <textarea class="form-control obrigatorio" rows="4" name="descricao"></textarea>
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Atualizar</button>
+                                <button type="submit" class="btn btn-primary">Registrar</button>
                             </div>
                         </div>
                         <input type="hidden" name="id">
@@ -199,38 +174,104 @@
             </div>
         </div>
         
-        <!-- Formulário para Registro de Estudante-->
-        <div class="modal fade" id="modalInsereEditaEstudante" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <!-- Formulário para edição de Usuario-->
+        <div class="modal fade" id="modalEditaUsuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id=""></h4>
+                        <h4 class="modal-title" id="">Editar Usuário</h4>
                     </div>
-                    <form method="post" action="" id="formInsereEditaEstudante">
+                    <form method="post" action="EditaUsuario" class="formEdita" id="formEditaUsuario">
                         <div class="modal-body">
-                            <div class="input-group">
-                                <span class="input-group-addon">Nome</span>
-                                <input type="text" class="form-control" placeholder="João" name="nome">
+                            <div class="form-group">
+                                <span class="form-group-addon">Usuário</span>
+                                <input type="text" class="form-control obrigatorio" placeholder="Login" name="usuario">
                             </div>
-                            <div class="input-group">
-                                <span class="input-group-addon">E-mail</span>
-                                <input type="email" class="form-control" placeholder="joao@umprovedor.com" name="email">
+                            <div class="form-group">
+                                <span class="form-group-addon">E-mail</span>
+                                <input type="email" class="form-control obrigatorio" placeholder="email@exemplo.com" name="email">
                             </div>
-                            <div class="input-group">
-                                <span class="input-group-addon">Usuário</span>
-                                <input type="text" class="form-control" placeholder="JoãoUser" name="usuario">
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Atualizar</button>
                             </div>
-                            <div class="input-group">
-                                <span class="input-group-addon">Senha</span>
-                                <input type="password" class="form-control" placeholder="Senha do João" name="senha">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>-->
-                            <button type="submit" class="btn btn-primary">Registrar Estudante</button>
                         </div>
                         <input type="hidden" name="id">
+                        <input type="hidden" name="idUsuario">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulário para edição de Estudante-->
+        <div class="modal fade" id="modalEditaEstudante" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="">Editar Estudante</h4>
+                    </div>
+                    <form method="post" action="EditaEstudante" class="formEdita" id="formEditaEstudante">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <span class="form-group-addon">Nome</span>
+                                <input type="text" class="form-control obrigatorio" placeholder="Nome" name="nome">
+                            </div>
+                            <div class="form-group">
+                                <span class="form-group-addon">E-mail</span>
+                                <input type="email" class="form-control obrigatorio" placeholder="email@exemplo.com" name="email">
+                            </div>
+                            <div class="form-group">
+                                <span class="form-group-addon">Usuário</span>
+                                <input type="text" class="form-control obrigatorio" placeholder="Login" name="usuario">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Atualizar</button>
+                            </div>
+                        </div>
+                        <input type="hidden" name="id">
+                        <input type="hidden" name="idUsuario">
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Formulário para edição de Professor-->
+        <div class="modal fade" id="modalEditaProfessor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="">Editar Professor</h4>
+                    </div>
+                    <form method="post" action="EditaProfessor" class="formEdita" id="formEditaProfessor">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <span class="form-group-addon">Nome</span>
+                                <input type="text" class="form-control obrigatorio" placeholder="Nome" name="nome">
+                            </div>
+                            <div class="form-group">
+                                <span class="form-group-addon">E-mail</span>
+                                <input type="email" class="form-control obrigatorio" placeholder="email@exemplo.com" name="email">
+                            </div>
+                            <div class="form-group">
+                                <span class="form-group-addon">Usuário</span>
+                                <input type="text" class="form-control obrigatorio" placeholder="Login" name="usuario">
+                            </div>
+                            <div class="form-group">
+                                <span class="form-group-addon">Titulação</span>
+                                <input type="text" class="form-control obrigatorio" placeholder="Título" name="titulacao">
+                            </div>
+                            <div class="form-group">
+                                <span class="form-group-addon">Área de Atuação</span>
+                                <input type="text" class="form-control obrigatorio" placeholder="Área de Atuação" name="areaAtuacao">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Atualizar</button>
+                            </div>
+                        </div>
+                        <input type="hidden" name="id">
+                        <input type="hidden" name="idUsuario">
                     </form>
                 </div>
             </div>
@@ -238,5 +279,6 @@
 	     
         <script type="text/javascript" src="bootstrap-3.3.7/dist/js/bootstrap.min.js" ></script>
         <script type="text/javascript" src="js/controleClicks.js"></script>
+        <script type="text/javascript" src="js/Login/statusLogin.js"></script>
     </body>
 </html>

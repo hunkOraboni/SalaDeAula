@@ -1,14 +1,9 @@
-<tr cod="[@cod]">
-    <td>[@nome]</td>
-    <td>[@email]</td>
-    <td idUsuario="[@idUsuario]">[@usuario]</td>
+<tr cod="[@id]" codUsuario="[@idUsuario]">
+    <td name="nome">[@nome]</td>
+    <td name="email">[@email]</td>
+    <td name="usuario">[@usuario]</td>
     <td>  
-        <button type="button" class="btn btn-info editarEstudante" data-toggle="modal" data-target="" cod="[@cod]">  
-            <span class="glyphicon glyphicon-pencil"></span>
-        </button>
-    </td>
-    <td>  
-        <button type="button" class="btn btn-danger removerEstudante" data-toggle="modal" data-target="#confirma" cod="[@cod]">
+        <button type="button" acao="RemoveEstudante" class="btn btn-danger removerPessoa" data-toggle="modal" data-target="#confirma" cod="[@cod]">
             <span class="glyphicon glyphicon-trash"></span>
         </button>
     </td>
