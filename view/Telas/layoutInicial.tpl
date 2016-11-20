@@ -106,7 +106,7 @@
                                 <a class="btnBuscaMat">Buscar Matérias</a>
                             </li>
                             <li>
-                                <a href="?acao=InsereMateria"> Adicionar Matéria</a>
+                                <a href="?acao=FormMateria"> Adicionar Matéria</a>
                             </li>
                         </ul>
                     </li>
@@ -117,7 +117,7 @@
                                 <a class="btnBuscaTop">Buscar Tópico</a>
                             </li>
                             <li>
-                                <a href="?acao=InsereTopico"> Adiciona Tópico</a>
+                                <a href="?acao=FormTopico"> Adiciona Tópico</a>
                             </li>
                         </ul>
                     </li>
@@ -448,7 +448,7 @@
             </div>
         </div>
         
-    <!-- Formulário para edição de Professor-->
+    <!-- Formulário para edição de Curso-->
         <div class="modal fade" id="modalEditaCurso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -478,6 +478,38 @@
                 </div>
             </div>
         </div>
+
+    <!-- Formulário para insercao de Materia-->
+        <div class="modal fade" id="modalInsereMateria" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="textoInsere">Inserção de Matéria</h4>
+                    </div>
+                    <form method="post" class="formInsereMateria" id="formInsereMateria">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Nome da Matéria</label>
+                                <input type="text" class="form-control obrigatorio" placeholder="Nome" name="nome">
+                            </div>
+                            <div class="form-group">
+                                <label>Descrição da Matéria</label>
+                                <textarea class="form-control obrigatorio" rows="4" name="descricao"></textarea>
+                            </div>
+                            
+                            <div class="modal-footer">
+                                <button class="btn btn-warning" type="reset">Resetar</button>
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </div>
+                        <input type="hidden" name="idCurso">
+                        <input type="hidden" name="id">
+                    </form>
+                </div>
+            </div>
+        </div>
+    <!-- Fim modal InsereMateria -->
     
     <!-- Modais -->
     

@@ -1,8 +1,8 @@
 <?php
 
-class EditaCurso {
+class EditaMateria {
     public function controller(){
-        $tabela = "curso";
+        $tabela = "materia";
         $id = $_POST["id"];
         $campos = array("nome", "descricao");
         $valores = array();

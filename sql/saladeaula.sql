@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2016 at 12:28 AM
--- Server version: 10.1.13-MariaDB
+-- Generation Time: 20-Nov-2016 às 15:12
+-- Versão do servidor: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `curso`
+-- Estrutura da tabela `curso`
 --
 
 CREATE TABLE `curso` (
@@ -32,10 +32,21 @@ CREATE TABLE `curso` (
   `descricao` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `curso`
+--
+
+INSERT INTO `curso` (`id`, `nome`, `descricao`) VALUES
+(1, 'CCO', 'Ciências da Computação'),
+(2, 'Sistemas de Informação', 'Sistemas de Informação'),
+(3, 'Engenharia de Bioprocessos', '123'),
+(4, 'Engenharia Engenharia Engenharia Engenharia Engenharia', '123'),
+(5, 'teste', 'testes');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `estudante`
+-- Estrutura da tabela `estudante`
 --
 
 CREATE TABLE `estudante` (
@@ -44,10 +55,48 @@ CREATE TABLE `estudante` (
   `idUsuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `estudante`
+--
+
+INSERT INTO `estudante` (`id`, `nome`, `idUsuario`) VALUES
+(1, 'Vinicius', 1);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `professor`
+-- Estrutura da tabela `liga_curso_materia`
+--
+
+CREATE TABLE `liga_curso_materia` (
+  `idCurso` int(11) NOT NULL,
+  `idMateria` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `materia`
+--
+
+CREATE TABLE `materia` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `descricao` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `materia`
+--
+
+INSERT INTO `materia` (`id`, `nome`, `descricao`) VALUES
+(1, 'Materia 1', 0),
+(2, 'Vinicius', 123);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `professor`
 --
 
 CREATE TABLE `professor` (
@@ -58,10 +107,31 @@ CREATE TABLE `professor` (
   `idUsuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `professor`
+--
+
+INSERT INTO `professor` (`id`, `nome`, `titulacao`, `areaAtuacao`, `idUsuario`) VALUES
+(1, 'Professor', 'Doutorado', 'Computação', 2);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estrutura da tabela `topico`
+--
+
+CREATE TABLE `topico` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `descricao` text NOT NULL,
+  `idLigaMateria` int(11) NOT NULL,
+  `idLigaQuestao` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -72,6 +142,14 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `usuario`, `email`, `senha`) VALUES
+(1, 'vinicius', 'vinicius@mail.com', 'vinicius'),
+(2, 'professor', 'professor@mail.com', 'professor');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -79,8 +157,7 @@ CREATE TABLE `usuario` (
 -- Indexes for table `curso`
 --
 ALTER TABLE `curso`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `nome` (`nome`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `estudante`
@@ -90,11 +167,30 @@ ALTER TABLE `estudante`
   ADD KEY `idUsuario` (`idUsuario`);
 
 --
+-- Indexes for table `liga_curso_materia`
+--
+ALTER TABLE `liga_curso_materia`
+  ADD KEY `idMateria` (`idMateria`),
+  ADD KEY `idCurso` (`idCurso`);
+
+--
+-- Indexes for table `materia`
+--
+ALTER TABLE `materia`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `professor`
 --
 ALTER TABLE `professor`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idUsuario` (`idUsuario`);
+
+--
+-- Indexes for table `topico`
+--
+ALTER TABLE `topico`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `usuario`
@@ -111,34 +207,51 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `estudante`
 --
 ALTER TABLE `estudante`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `materia`
+--
+ALTER TABLE `materia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `professor`
 --
 ALTER TABLE `professor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `topico`
+--
+ALTER TABLE `topico`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `estudante`
+-- Limitadores para a tabela `estudante`
 --
 ALTER TABLE `estudante`
   ADD CONSTRAINT `estudante_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `professor`
+-- Limitadores para a tabela `liga_curso_materia`
+--
+ALTER TABLE `liga_curso_materia`
+  ADD CONSTRAINT `liga_curso_materia_ibfk_2` FOREIGN KEY (`idMateria`) REFERENCES `materia` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `liga_curso_materia_ibfk_3` FOREIGN KEY (`idCurso`) REFERENCES `curso` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Limitadores para a tabela `professor`
 --
 ALTER TABLE `professor`
   ADD CONSTRAINT `professor_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;

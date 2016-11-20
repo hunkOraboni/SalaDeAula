@@ -5,3 +5,5 @@ class RemoveCurso {
         return Remove::removePorId("curso", $_GET["id"]);
     }
 }
+
+?>
