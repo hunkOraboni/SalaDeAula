@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 20-Nov-2016 às 15:12
--- Versão do servidor: 10.1.13-MariaDB
--- PHP Version: 7.0.8
+-- Generation Time: 02-Dez-2016 às 13:25
+-- Versão do servidor: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -117,6 +117,32 @@ INSERT INTO `professor` (`id`, `nome`, `titulacao`, `areaAtuacao`, `idUsuario`) 
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `questao`
+--
+
+CREATE TABLE `questao` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `questao` varchar(255) NOT NULL,
+  `resposta` char(1) NOT NULL,
+  `a` varchar(255) NOT NULL,
+  `b` varchar(255) NOT NULL,
+  `c` varchar(255) NOT NULL,
+  `d` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `questao`
+--
+
+INSERT INTO `questao` (`id`, `nome`, `questao`, `resposta`, `a`, `b`, `c`, `d`) VALUES
+(1, 'a', 'a', 'a', 'a', 'a', 'a', 'a'),
+(2, 'qwe', 'qwe', 'a', 'qwe', 'qw', 'qwe', 'qqw'),
+(3, 'qwe', 'qwe', 'a', 'qwe', 'qw', 'qwe', 'qqw');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `topico`
 --
 
@@ -127,6 +153,13 @@ CREATE TABLE `topico` (
   `idLigaMateria` int(11) NOT NULL,
   `idLigaQuestao` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `topico`
+--
+
+INSERT INTO `topico` (`id`, `nome`, `descricao`, `idLigaMateria`, `idLigaQuestao`) VALUES
+(1, 'Topico', 'teste', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -187,6 +220,12 @@ ALTER TABLE `professor`
   ADD KEY `idUsuario` (`idUsuario`);
 
 --
+-- Indexes for table `questao`
+--
+ALTER TABLE `questao`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `topico`
 --
 ALTER TABLE `topico`
@@ -217,17 +256,22 @@ ALTER TABLE `estudante`
 -- AUTO_INCREMENT for table `materia`
 --
 ALTER TABLE `materia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `professor`
 --
 ALTER TABLE `professor`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `questao`
+--
+ALTER TABLE `questao`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `topico`
 --
 ALTER TABLE `topico`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `usuario`
 --

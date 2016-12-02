@@ -199,7 +199,12 @@ $(".editarQuestao").click(function (e) {
     jQuery(".editarCamposQuestao").prop("disabled", false);
     jQuery(".salvarCamposQuestao").prop("disabled", true);
     jQuery("input[name=nome]").prop("disabled", true);
-    jQuery("textarea[name=questao]").prop("disabled", true);
+    jQuery("textarea[name=enunciado]").prop("disabled", true);
+    jQuery("textarea[name=respostaA]").prop("disabled", true);
+    jQuery("textarea[name=respostaB]").prop("disabled", true);
+    jQuery("textarea[name=respostaC]").prop("disabled", true);
+    jQuery("textarea[name=respostaD]").prop("disabled", true);
+    jQuery("textarea[name=resposta]").prop("disabled", true);
     
     var id = $(this).closest("a").attr("cod");
     // Encontra os elementos html e busca a tabela por php
@@ -228,16 +233,16 @@ $(".editarQuestao").click(function (e) {
 
 $(".editarCamposQuestao").click(function (e) {
     e.preventDefault();
-    //jQuery(".salvarCamposCurso").attr("disabled", "");
     jQuery(".editarCamposQuestao").prop("disabled", true);
     jQuery(".salvarCamposQuestao").prop("disabled", false);
-    $modalEditaQuestao.find("input[name=nome]").attr("value", retornoPost.msg.nome);
-    $modalEditaQuestao.find("input[name=questao]").attr("value", retornoPost.msg.nome);
-    $modalEditaQuestao.find("input[name=respostaA]").attr("value", retornoPost.msg.nome);
-    $modalEditaQuestao.find("input[name=respostaB]").attr("value", retornoPost.msg.nome);
-    $modalEditaQuestao.find("input[name=respostaC]").attr("value", retornoPost.msg.nome);
-    $modalEditaQuestao.find("input[name=respostaD]").attr("value", retornoPost.msg.nome);
-    $modalEditaQuestao.find("input[name=resposta]").val(retornoPost.msg.descricao);
+    var $modalEditaQuestao = $("#modalEditaQuestao");
+    $modalEditaQuestao.find("input[name=nome]").prop("disabled", false);
+    $modalEditaQuestao.find("textarea[name=enunciado]").prop("disabled", false);
+    $modalEditaQuestao.find("textarea[name=respostaA]").prop("disabled", false);
+    $modalEditaQuestao.find("textarea[name=respostaB]").prop("disabled", false);
+    $modalEditaQuestao.find("textarea[name=respostaC]").prop("disabled", false);
+    $modalEditaQuestao.find("textarea[name=respostaD]").prop("disabled", false);
+    $modalEditaQuestao.find("textarea[name=resposta]").prop("disabled", false);
 
 });
 

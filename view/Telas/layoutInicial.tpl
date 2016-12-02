@@ -511,7 +511,7 @@
         </div>
     <!-- Fim modal InsereMateria -->
     
-    <!-- Formulário para edição de Curso-->
+    <!-- Formulário para edição de Curso -->
         <div class="modal fade" id="modalEditaQuestao" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -519,7 +519,7 @@
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <h4 class="modal-title" id="">Informações da Questão</h4>
                     </div>
-                    <form method="post" class="formEditaCurso" id="formEditaQuestao">
+                    <form method="post" class="formEditaQuestao" id="formEditaQuestao">
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Nome da Questão</label>
