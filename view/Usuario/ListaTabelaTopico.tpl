@@ -3,7 +3,7 @@
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-12 text-center">
-                                        <a href="?acao=FormQuestao" class="questoes">
+                                        <a href="?acao=ListaQuestao" class="questoes">
                                             <div class="huge">[@nome]</div>
                                         </a>
                                     </div>
