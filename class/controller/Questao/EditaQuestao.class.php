@@ -1,10 +1,10 @@
 <?php
 
-class EditaCurso {
+class EditaQuestao {
     public function controller(){
-        $tabela = "curso";
+        $tabela = "questao";
         $id = $_POST["id"];
-        $campos = array("nome", "descricao");
+        $campos = array("nome", "questao", "a", "b", "c","d");
         $valores = array();
         foreach($campos as $campo) {
             $valores[$campo] = $_POST[$campo];
